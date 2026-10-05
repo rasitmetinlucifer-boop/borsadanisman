@@ -1,49 +1,276 @@
-const KAP_URL = 'https://www.kap.org.tr/tr/bildirim-sorgu-sonuc?cat=6&cmp=Y&slf=ALL&srcbar=Y';
+const KAP_BASE = "https://www.kap.org.tr";
+const LIST_URL = `${KAP_BASE}/tr/api/disclosure/members/byCriteria`;
 
-function clean(s='') {
-  return s.replace(/<script[\s\S]*?<\/script>/gi,' ')
-    .replace(/<style[\s\S]*?<\/style>/gi,' ')
-    .replace(/<[^>]+>/g,' ')
-    .replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&quot;/gi,'"')
-    .replace(/&#39;/gi,"'").replace(/&lt;/gi,'<').replace(/&gt;/gi,'>')
-    .replace(/\s+/g,' ').trim();
+function corsHeaders() {
+  return {
+    "content-type": "application/json; charset=utf-8",
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "GET, OPTIONS",
+    "access-control-allow-headers": "Content-Type",
+    "cache-control": "public, max-age=60, s-maxage=120"
+  };
 }
-function abs(href='') {
-  if (!href) return 'https://www.kap.org.tr/tr/bildirim-sorgu';
-  if (/^https?:\/\//i.test(href)) return href;
-  return 'https://www.kap.org.tr' + (href.startsWith('/') ? href : '/' + href);
+
+function isoDateTR(daysAgo = 0) {
+  const now = new Date();
+  const trNow = new Date(
+    now.toLocaleString("en-US", { timeZone: "Europe/Istanbul" })
+  );
+
+  trNow.setDate(trNow.getDate() - daysAgo);
+
+  const y = trNow.getFullYear();
+  const m = String(trNow.getMonth() + 1).padStart(2, "0");
+  const d = String(trNow.getDate()).padStart(2, "0");
+
+  return `${y}-${m}-${d}`;
 }
-function parseRows(html) {
-  const out=[];
-  const rows=html.match(/<tr\b[\s\S]*?<\/tr>/gi)||[];
-  for (const row of rows) {
-    const cells=(row.match(/<td\b[\s\S]*?<\/td>/gi)||[]).map(clean);
-    if (cells.length < 4) continue;
-    const text=clean(row);
-    if (!text || /Tarih\s+Kod\s+/i.test(text)) continue;
-    const linkMatch=row.match(/href=["']([^"']*(?:Bildirim|bildirim)[^"']*)["']/i) || row.match(/href=["']([^"']+)["']/i);
-    const date=(text.match(/(?:Bugün|Dün)(?:\s+\d{1,2}:\d{2})?|\d{2}\.\d{2}\.\d{4}\s+\d{1,2}:\d{2}/i)||[''])[0];
-    const symbols=[...new Set((text.match(/\b[A-ZÇĞİÖŞÜ]{2,6}\b/g)||[]).filter(x=>!['KAP','BIST','AŞ','SPK','PAY','GENEL','FON'].includes(x)))];
-    let title='';
-    for (const c of cells) { if (c.length>title.length && c.length<320) title=c; }
-    if (!title) title=text.slice(0,220);
-    out.push({date, symbols, title, text:text.slice(0,700), url:abs(linkMatch?.[1]||'')});
-  }
-  const seen=new Set();
-  return out.filter(x=>{const k=x.date+'|'+x.title; if(seen.has(k))return false; seen.add(k); return true;});
+
+function splitSymbols(value) {
+  if (!value) return [];
+
+  return String(value)
+    .toUpperCase()
+    .split(/[,\s;/]+/)
+    .map(x => x.trim())
+    .filter(Boolean)
+    .slice(0, 50);
 }
-exports.handler = async (event) => {
+
+function disclosureSymbols(d) {
+  const raw = [
+    d.relatedStocks,
+    d.stockCodes,
+    d.fundCode
+  ]
+    .filter(Boolean)
+    .join(",");
+
+  return [
+    ...new Set(
+      raw
+        .toUpperCase()
+        .split(/[,\s;/]+/)
+        .map(x => x.trim())
+        .filter(Boolean)
+    )
+  ];
+}
+
+function normalizeDisclosure(d) {
+  const symbols = disclosureSymbols(d);
+  const index = d.disclosureIndex;
+
+  const subject =
+    d.subject ||
+    d.summary ||
+    "KAP Bildirimi";
+
+  const company = d.kapTitle || "";
+  const summary = d.summary || "";
+
+  const title =
+    company && company !== subject
+      ? `${company} — ${subject}`
+      : subject;
+
+  return {
+    id: index,
+    date: d.publishDate || "",
+    symbols,
+    title,
+    text: summary || subject,
+    subject,
+    company,
+
+    url: index
+      ? `${KAP_BASE}/tr/Bildirim/${index}`
+      : `${KAP_BASE}/tr/bildirim-sorgu`,
+
+    disclosureClass: d.disclosureClass || "",
+    disclosureType: d.disclosureType || "",
+    isLate: !!d.isLate
+  };
+}
+
+async function fetchWithTimeout(url, options = {}, ms = 12000) {
+  const controller = new AbortController();
+
+  const timer = setTimeout(
+    () => controller.abort(),
+    ms
+  );
+
   try {
-    const raw=(event.queryStringParameters?.symbols||'').toUpperCase();
-    const wanted=raw.split(',').map(s=>s.trim()).filter(Boolean).slice(0,30);
-    const r=await fetch(KAP_URL,{headers:{'user-agent':'Mozilla/5.0 (compatible; BorsaDanismanPaneli/1.0)','accept-language':'tr-TR,tr;q=0.9'}});
-    if(!r.ok) throw new Error('KAP HTTP '+r.status);
-    const html=await r.text();
-    let items=parseRows(html);
-    if(wanted.length) items=items.filter(x=>wanted.some(s=>new RegExp('(^|[^A-Z0-9])'+s+'([^A-Z0-9]|$)','i').test(x.text)));
-    items=items.slice(0,12);
-    return {statusCode:200,headers:{'content-type':'application/json; charset=utf-8','cache-control':'public, max-age=120, s-maxage=120','access-control-allow-origin':'*'},body:JSON.stringify({ok:true,source:'KAP',fetchedAt:new Date().toISOString(),items})};
-  } catch (e) {
-    return {statusCode:502,headers:{'content-type':'application/json; charset=utf-8','access-control-allow-origin':'*'},body:JSON.stringify({ok:false,error:String(e?.message||e),items:[]})};
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+exports.handler = async event => {
+  const headers = corsHeaders();
+
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 204,
+      headers,
+      body: ""
+    };
+  }
+
+  try {
+    const wanted = splitSymbols(
+      event.queryStringParameters?.symbols
+    );
+
+    const body = {
+      fromDate: isoDateTR(7),
+      toDate: isoDateTR(0),
+      mkkMemberOidList: [],
+      subjectList: []
+    };
+
+    const commonHeaders = {
+      "user-agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
+
+      accept:
+        "application/json, text/plain, */*",
+
+      "accept-language":
+        "tr-TR,tr;q=0.9,en;q=0.8",
+
+      referer:
+        `${KAP_BASE}/tr/bildirim-sorgu`,
+
+      origin:
+        KAP_BASE
+    };
+
+    let cookie = "";
+
+    try {
+      const warm = await fetchWithTimeout(
+        `${KAP_BASE}/tr/bildirim-sorgu`,
+        {
+          method: "GET",
+          headers: commonHeaders,
+          redirect: "follow"
+        },
+        8000
+      );
+
+      if (warm?.headers?.getSetCookie) {
+        cookie = warm.headers
+          .getSetCookie()
+          .map(v => v.split(";")[0])
+          .join("; ");
+      } else {
+        const setCookie =
+          warm?.headers?.get("set-cookie");
+
+        if (setCookie) {
+          cookie = setCookie
+            .split(",")
+            .map(v => v.split(";")[0])
+            .join("; ");
+        }
+      }
+    } catch (_) {}
+
+    const apiHeaders = {
+      ...commonHeaders,
+      "content-type": "application/json"
+    };
+
+    if (cookie) {
+      apiHeaders.cookie = cookie;
+    }
+
+    const response =
+      await fetchWithTimeout(
+        LIST_URL,
+        {
+          method: "POST",
+          headers: apiHeaders,
+          body: JSON.stringify(body),
+          redirect: "follow"
+        },
+        15000
+      );
+
+    if (!response.ok) {
+      const preview =
+        (await response.text()).slice(0, 300);
+
+      throw new Error(
+        `KAP HTTP ${response.status}${
+          preview ? " - " + preview : ""
+        }`
+      );
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error(
+        "KAP beklenmeyen veri biçimi döndürdü."
+      );
+    }
+
+    let items =
+      data.map(normalizeDisclosure);
+
+    if (wanted.length) {
+      items = items.filter(item =>
+        item.symbols.some(symbol =>
+          wanted.includes(symbol)
+        )
+      );
+    }
+
+    items = items.slice(0, 20);
+
+    return {
+      statusCode: 200,
+      headers,
+
+      body: JSON.stringify({
+        ok: true,
+        source: "KAP",
+        fetchedAt:
+          new Date().toISOString(),
+
+        requestedSymbols: wanted,
+        items
+      })
+    };
+
+  } catch (error) {
+    return {
+      statusCode: 502,
+
+      headers: {
+        ...headers,
+        "cache-control": "no-store"
+      },
+
+      body: JSON.stringify({
+        ok: false,
+
+        error:
+          error?.name === "AbortError"
+            ? "KAP isteği zaman aşımına uğradı."
+            : String(
+                error?.message || error
+              ),
+
+        items: []
+      })
+    };
   }
 };
