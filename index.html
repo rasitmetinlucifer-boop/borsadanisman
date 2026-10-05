@@ -1,0 +1,229 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Borsa Danışman Paneli V9 Premium</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#f5f7fb;--surface:#fff;--ink:#172033;--muted:#718096;--line:#e7eaf0;--nav:#0e1728;--accent:#315efb;--good:#0a9b64;--bad:#dc3c4b;--soft:#eef3ff}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}button,input,select,textarea{font:inherit}.hide{display:none!important}.topbar{height:68px;background:var(--nav);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;position:sticky;top:0;z-index:20}.brand{font-size:19px;font-weight:800;display:flex;gap:10px;align-items:center}.topbar button{width:auto;background:#202c43;color:#fff;border:0;border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer}.auth{max-width:470px;margin:70px auto;padding:0 18px}.authCard,.panel,.metric,.clientHero{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 22px #1720330b}.authCard{padding:24px}.status{background:var(--soft);padding:11px 13px;border-radius:10px;color:#42526e;font-size:13px;margin:12px 0}.authGrid{display:grid;gap:10px}.authGrid input,.authGrid button{padding:12px;border-radius:10px;border:1px solid #dce1e9}.authGrid button{background:var(--nav);color:#fff;font-weight:800;cursor:pointer}.authGrid .secondary{background:#edf0f5;color:#172033}.layout{max-width:1500px;margin:0 auto;padding:22px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}.sidebar{background:#111b2e;color:#dbe4f4;border-radius:18px;padding:18px;height:calc(100vh - 112px);position:sticky;top:90px;overflow:auto}.sideTitle{font-size:11px;letter-spacing:.12em;color:#8290a8;text-transform:uppercase;margin:3px 4px 12px}.clientList{display:grid;gap:7px}.clientChip{padding:11px 12px;border-radius:11px;background:#17243b;color:#eaf0fb;border:1px solid #23324c;cursor:pointer;font-weight:700;text-align:left}.clientChip.active{background:#315efb;border-color:#315efb}.sideAdd{margin-top:12px;width:100%;padding:11px;border:1px dashed #50617d;border-radius:11px;background:transparent;color:#fff;font-weight:800;cursor:pointer}.main{min-width:0}.clientHero{padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:16px}.heroName{font-size:23px;font-weight:850}.heroSub{font-size:13px;color:var(--muted);margin-top:5px}.heroActions{display:flex;gap:8px;flex-wrap:wrap}.heroActions button{border:0;border-radius:10px;padding:10px 12px;font-weight:800;cursor:pointer;background:#edf1f7;color:#172033}.heroActions .primary{background:var(--nav);color:#fff}.heroActions .danger{background:#fff0f1;color:#bd2634}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.metric{padding:17px}.metric .label{font-size:12px;color:var(--muted);font-weight:650}.metric .value{font-size:26px;font-weight:850;margin-top:7px;letter-spacing:-.02em}.pos{color:var(--good)!important}.neg{color:var(--bad)!important}.contentGrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,.75fr);gap:16px}.panel{padding:18px}.panelHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.panel h2{font-size:17px;margin:0}.badge{font-size:11px;background:#f0f3f8;color:#667085;padding:6px 8px;border-radius:999px}.tableWrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th{color:#7b8495;font-size:11px;text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}td{padding:12px 8px;border-bottom:1px solid #eef0f4}.symbol{font-weight:850;font-size:14px}.company{font-size:11px;color:var(--muted);margin-top:3px}.actions{display:flex;gap:5px}.actions button{border:0;border-radius:8px;padding:7px 8px;background:#172033;color:#fff;font-size:11px;font-weight:800;cursor:pointer}.actions .secondary{background:#edf0f5;color:#172033}.actions .danger{background:#fff0f1;color:#bd2634}.addBox{margin-top:16px;background:#f8faff;border:1px solid #e4eafb;border-radius:14px;padding:14px}.addBox h3{margin:0 0 11px;font-size:14px}.form{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.form input,.form select,.form textarea,.sharebox input,.clientEdit input{width:100%;border:1px solid #dfe3ea;background:#fff;border-radius:10px;padding:10px;color:#172033}.form textarea{min-height:112px;resize:vertical}.full{grid-column:1/-1}.form button,.sharebox button,.clientEdit button{border:0;border-radius:10px;padding:10px;background:var(--nav);color:#fff;font-weight:800;cursor:pointer}.analysisCard select{width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:11px;background:#fff;margin-bottom:10px}.analysisLevels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.analysisLevels input{width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:10px}.analysisCard textarea{width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:11px;min-height:125px;margin-top:9px;resize:vertical}.analysisCard .save{width:100%;border:0;border-radius:10px;background:#315efb;color:#fff;font-weight:850;padding:11px;margin-top:9px;cursor:pointer}.sharePanel{margin-top:16px}.sharebox{display:flex;gap:8px}.sharebox button{width:auto;white-space:nowrap}.notice{font-size:11px;color:var(--muted);margin-top:8px}.clientEdit{display:flex;gap:8px;margin-top:10px}.clientEdit button{width:auto;white-space:nowrap}.section{margin-top:16px}.viewerLayout{max-width:1200px;margin:24px auto;padding:0 16px}.viewerHero{background:linear-gradient(135deg,#101b30,#263a64);color:#fff;border-radius:20px;padding:24px;margin-bottom:15px}.viewerHero h1{margin:0;font-size:25px}.viewerHero p{margin:7px 0 0;color:#c6d1e5}.viewer .adminOnly{display:none!important}.viewer .layout{display:block;max-width:1200px}.viewer .sidebar{display:none}.viewer .clientHero{display:none}.viewer .contentGrid{grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr)}.viewer #viewerTitle{display:block!important}.viewer #viewerTitle.panel{background:linear-gradient(135deg,#101b30,#263a64);color:#fff;border:0}.viewer #viewerTitle .notice{color:#c6d1e5}.empty{text-align:center;color:#8a94a6;padding:26px 8px}.secondary{background:#edf0f5!important;color:#172033!important}.danger{background:#bd2634!important;color:#fff!important}@media(max-width:1050px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}.clientList{display:flex;overflow:auto}.clientChip{min-width:170px}.contentGrid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.layout{padding:12px}.metrics{grid-template-columns:1fr 1fr}.metric .value{font-size:21px}.clientHero{align-items:flex-start;flex-direction:column}.form,.analysisLevels{grid-template-columns:1fr}.sharebox,.clientEdit{display:grid}.contentGrid{grid-template-columns:1fr}.topbar{padding:0 14px}.brand{font-size:16px}}
+.analysisCard #analysisImage{max-height:900px;object-fit:contain;background:#f7f9fc}.viewer .analysisCard #analysisImage{max-height:none}.analysisCard .empty{background:#f8faff;border:1px dashed #d8dfec;border-radius:12px;margin-top:6px}
+
+.analysisModal{position:fixed;inset:0;background:rgba(5,12,25,.82);z-index:9999;display:flex;align-items:center;justify-content:center;padding:28px;backdrop-filter:blur(5px)}
+.analysisModal.hide{display:none!important}.analysisModalBox{position:relative;max-width:min(920px,92vw);max-height:94vh;display:flex;align-items:center;justify-content:center}.analysisModalImg{display:block;max-width:100%;max-height:92vh;width:auto;height:auto;border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.5);background:#fff}.analysisModalClose{position:absolute;right:-14px;top:-14px;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:#111827;font-size:23px;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.viewer .analysisCard #analysisImage{cursor:pointer}.viewer .analysisCard #analysisImage:hover{filter:brightness(.96)}
+@media(max-width:650px){.analysisModal{padding:12px}.analysisModalBox{max-width:96vw}.analysisModalImg{max-height:88vh;border-radius:12px}.analysisModalClose{right:4px;top:4px;width:38px;height:38px;background:rgba(255,255,255,.94)}}
+
+/* ===== V9 PREMIUM - DANISAN EKRANI ===== */
+.viewer{--vbg:#07101f;--vcard:#0d192c;--vcard2:#101f36;--vline:#203451;--vtext:#f5f8ff;--vmuted:#91a2bd;--vblue:#4d8dff;--vcyan:#3dd6d0;--vgood:#38d996;--vbad:#ff6677;background:radial-gradient(circle at 10% 0%,#14294b 0,transparent 32%),radial-gradient(circle at 92% 15%,#102e42 0,transparent 28%),var(--vbg);min-height:100vh;color:var(--vtext)}
+.viewer .topbar{height:76px;background:rgba(7,16,31,.86);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(18px);padding:0 max(22px,calc((100vw - 1200px)/2));box-shadow:0 10px 35px rgba(0,0,0,.18)}
+.viewer .brand{font-size:17px;letter-spacing:.01em}.viewer .brand span:last-child{background:linear-gradient(135deg,#315efb,#31b8fb)!important;box-shadow:0 6px 18px rgba(49,94,251,.3)}
+.viewer .topbar button{background:#14233a;border:1px solid #243957;color:#eaf1ff}
+.viewer .layout{max-width:1240px;padding:28px 20px 48px}.viewer .main{width:100%}
+.viewer #viewerTitle.panel{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(22,42,73,.96),rgba(12,28,51,.96));border:1px solid #29456e;border-radius:24px;padding:26px 28px;box-shadow:0 18px 55px rgba(0,0,0,.28);margin-bottom:18px!important}
+.viewer #viewerTitle.panel:after{content:'PORTFÖY';position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:56px;font-weight:900;letter-spacing:.12em;color:rgba(255,255,255,.035);pointer-events:none}
+.viewer #viewerTitle h2{font-size:26px;letter-spacing:-.02em}.viewer #viewerTitle .notice{font-size:12px;color:#8fa4c4;margin-top:7px}
+.viewer .metrics{gap:14px;margin-bottom:18px}.viewer .metric{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(16,31,54,.96),rgba(11,24,43,.96));border:1px solid var(--vline);border-radius:20px;padding:20px 20px 18px;box-shadow:0 14px 35px rgba(0,0,0,.2);min-height:112px}
+.viewer .metric:before{content:'';position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,#4d8dff,#3dd6d0);opacity:.9}.viewer .metric:nth-child(3):before,.viewer .metric:nth-child(4):before{background:linear-gradient(90deg,#37d99a,#78f0c0)}
+.viewer .metric .label{color:var(--vmuted);font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:800}.viewer .metric .value{font-size:29px;color:#fff;margin-top:12px}.viewer .metric .pos{color:var(--vgood)!important}.viewer .metric .neg{color:var(--vbad)!important}
+.viewer .contentGrid{grid-template-columns:minmax(0,1.55fr) minmax(350px,.72fr);gap:18px;align-items:start}.viewer .panel{background:linear-gradient(145deg,rgba(14,27,47,.98),rgba(10,22,39,.98));border:1px solid var(--vline);border-radius:22px;box-shadow:0 16px 42px rgba(0,0,0,.22);padding:20px}.viewer .panelHead{margin-bottom:16px}.viewer .panel h2{font-size:17px;color:#f7faff}.viewer .badge{background:#142742;color:#93add2;border:1px solid #254064;padding:7px 10px;font-weight:700}
+.viewer table{font-size:13px}.viewer th{color:#7f94b3;border-bottom:1px solid #233955;padding:12px 9px}.viewer td{color:#dbe6f7;border-bottom:1px solid rgba(55,78,111,.42);padding:15px 9px}.viewer tbody tr{transition:.18s}.viewer tbody tr:hover{background:rgba(77,141,255,.055)}.viewer td b{color:#fff}.viewer td small{color:#8297b6}.viewer .pos{color:var(--vgood)!important}.viewer .neg{color:var(--vbad)!important}
+.viewer .analysisCard{position:sticky;top:94px;background:linear-gradient(160deg,#10213b,#0a172a)}.viewer .analysisCard select{appearance:none;background:#132743;color:#f3f7ff;border:1px solid #2b4a72;border-radius:14px;padding:13px 42px 13px 14px;font-weight:800;box-shadow:inset 0 1px rgba(255,255,255,.03)}
+.viewer .analysisCard #analysisImage{border:1px solid #2b4a72!important;border-radius:18px!important;box-shadow:0 16px 38px rgba(0,0,0,.32);transition:transform .22s,filter .22s}.viewer .analysisCard #analysisImage:hover{filter:brightness(1.05);transform:translateY(-2px)}.viewer .analysisCard .empty{background:#0b182b;border:1px dashed #2b456b;color:#8297b6}
+.viewer .section{margin-top:18px}.viewer .empty{color:#7f94b3}.viewer .analysisModal{background:rgba(2,7,15,.9);backdrop-filter:blur(12px)}.viewer .analysisModalImg{border:1px solid #2d4770;box-shadow:0 35px 100px rgba(0,0,0,.7)}
+@media(max-width:1050px){.viewer .contentGrid{grid-template-columns:1fr}.viewer .analysisCard{position:static}.viewer .metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.viewer .topbar{height:64px;padding:0 14px}.viewer .layout{padding:14px 10px 32px}.viewer #viewerTitle.panel{padding:20px;border-radius:18px}.viewer #viewerTitle h2{font-size:21px}.viewer #viewerTitle.panel:after{display:none}.viewer .metrics{gap:9px}.viewer .metric{padding:15px 13px;min-height:96px;border-radius:16px}.viewer .metric .value{font-size:21px}.viewer .panel{padding:14px;border-radius:18px}.viewer .contentGrid{gap:12px}.viewer td,.viewer th{white-space:nowrap}}
+
+
+/* V9.1: Danışan ekranında analiz sağ paneli kaldırıldı; hisse satırına tıklayınca analiz açılır. */
+.viewer .analysisCard{display:none!important}
+.viewer .contentGrid{grid-template-columns:1fr!important}
+.viewer #rows tr[data-analysis-id]{cursor:pointer;transition:background .18s ease,transform .18s ease}
+.viewer #rows tr[data-analysis-id]:hover{background:rgba(77,141,255,.10)}
+.viewer #rows tr[data-analysis-id] td:first-child b{text-decoration:underline;text-decoration-color:rgba(77,141,255,.55);text-underline-offset:4px}
+
+/* V9.2 KAP yan akışları */
+.kapRail{display:none}.viewer .kapRail{display:block;position:fixed;top:92px;width:245px;bottom:24px;overflow:auto;z-index:8}.viewer .kapRail.left{left:18px}.viewer .kapRail.right{right:18px}.kapBox{background:#101b30;color:#eef4ff;border:1px solid #253756;border-radius:18px;padding:14px;box-shadow:0 12px 30px #0b122033}.kapBox h3{margin:0 0 4px;font-size:14px}.kapBox .kapSub{font-size:10px;color:#91a2be;margin-bottom:12px}.kapItem{display:block;text-decoration:none;color:inherit;background:#16243d;border:1px solid #263957;border-radius:12px;padding:11px;margin-top:9px;transition:.15s}.kapItem:hover{transform:translateY(-1px);border-color:#4e72b6}.kapCode{font-weight:900;font-size:12px;color:#8fb0ff}.kapTitle{font-size:12px;line-height:1.35;margin-top:5px}.kapMeta{font-size:10px;color:#91a2be;margin-top:6px}.kapLive{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:#f5c451;background:#2b2a20;border-radius:999px;padding:5px 7px;margin-top:8px}.kapDot{width:6px;height:6px;border-radius:50%;background:#f5c451}.viewer .layout{max-width:calc(100% - 550px)}.viewer .contentGrid{grid-template-columns:1fr!important}.viewer .analysisCard{display:none!important}.kapHoldings{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}.kapHolding{font-size:10px;font-weight:850;padding:5px 7px;border-radius:999px;background:#24395e;color:#bcd0ff}.kapFooter{display:block;margin-top:12px;text-align:center;color:#a9b8cf;font-size:10px;text-decoration:none}.viewer #rows tr{cursor:pointer}.viewer #rows tr:hover{background:#f6f8ff}
+@media(max-width:1450px){.viewer .kapRail{position:static;width:auto;bottom:auto}.viewer .kapRail.left,.viewer .kapRail.right{left:auto;right:auto}.viewer .kapRail.left{margin:16px 16px 0}.viewer .kapRail.right{margin:0 16px 16px}.viewer .layout{max-width:1200px}.viewer .kapBox{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.viewer .kapBox h3,.viewer .kapBox .kapSub,.viewer .kapBox .kapHoldings,.viewer .kapBox .kapLive,.viewer .kapBox .kapFooter{grid-column:1/-1}.kapItem{margin-top:0}}
+@media(max-width:750px){.viewer .kapBox{grid-template-columns:1fr}.viewer .kapRail.left{margin:10px 10px 0}.viewer .kapRail.right{margin:0 10px 10px}}
+</style></head><body>
+<div class="topbar"><div class="brand">📈 <span>Borsa Danışman Takip Paneli</span><span style="font-size:10px;background:#315efb;padding:4px 7px;border-radius:999px">V9 PREMIUM</span></div><button id="logoutBtn" class="hide">Çıkış</button></div>
+<div id="authBox" class="auth hide"><div class="authCard">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px"><button id="clientTab" onclick="setLoginMode('client')" style="padding:11px;border:0;border-radius:10px;background:#315efb;color:white;font-weight:800;cursor:pointer">Danışan Girişi</button><button id="adminTab" onclick="setLoginMode('admin')" style="padding:11px;border:0;border-radius:10px;background:#edf0f5;color:#172033;font-weight:800;cursor:pointer">Yönetici Girişi</button></div>
+<h2 id="loginTitle" style="margin:0">Danışan Girişi</h2><div id="authMsg" class="status">Size verilen kullanıcı adı ve şifre ile giriş yapın.</div>
+<div class="authGrid"><input id="email" placeholder="Kullanıcı adı"><input id="password" type="password" placeholder="Şifre"><button onclick="login()">Giriş Yap</button><button id="signupBtn" class="secondary hide" onclick="signup()">İlk Kez Yönetici Hesabı Oluştur</button></div>
+</div></div>
+<aside id="kapLeft" class="kapRail left"><div class="kapBox"><h3>Son KAP Bildirimleri</h3><div class="kapSub">Resmî KAP akışı</div><div id="kapStatus" class="kapLive"><span class="kapDot"></span> KAP verisi yükleniyor</div><div id="kapLatestItems"><div class="kapItem"><div class="kapCode">KAP</div><div class="kapTitle">Bildirimler yükleniyor…</div></div></div><a class="kapFooter" href="https://www.kap.org.tr/tr/" target="_blank" rel="noopener">KAP ana sayfa ↗</a></div></aside>
+<div id="app" class="layout hide">
+<aside class="sidebar adminOnly"><div class="sideTitle">Danışanlar</div><div id="clientList" class="clientList"></div><button class="sideAdd" onclick="addClient()">＋ Yeni Danışan</button></aside>
+<main class="main">
+<div id="viewerTitle" class="panel hide" style="margin-bottom:16px"><h2 id="viewerName">Danışan Portföyü</h2><div class="notice">Bu ekran yalnızca görüntüleme içindir.</div></div>
+<div class="clientHero adminOnly"><div><div class="heroName" id="heroClient">Danışan seçilmedi</div><div class="heroSub" id="heroUpdate">Portföy ve analiz yönetimi</div></div><div class="heroActions"><button class="primary" onclick="addClient()">+ Danışan</button><button onclick="copyShare()">Paylaşım Linki</button><button class="danger" onclick="deleteClient()">Danışanı Sil</button></div></div>
+<div class="metrics"><div class="metric"><div class="label">Toplam Yatırım</div><div class="value" id="invested">₺0</div></div><div class="metric"><div class="label">Güncel Portföy</div><div class="value" id="current">₺0</div></div><div class="metric"><div class="label">Açık Kâr / Zarar</div><div class="value" id="pnl">₺0</div></div><div class="metric"><div class="label">Getiri</div><div class="value" id="return">%0</div></div></div>
+<div class="contentGrid"><div>
+<div class="panel"><div class="panelHead"><h2>Açık Pozisyonlar</h2><span class="badge">Güncel fiyat manuel</span></div><div class="tableWrap"><table><thead><tr><th>Hisse</th><th>Alış</th><th>Fiyat</th><th>Adet</th><th>Maliyet</th><th>Güncel</th><th>K/Z TL</th><th>K/Z %</th><th class="adminOnly">İşlem</th></tr></thead><tbody id="rows"></tbody></table></div>
+<div class="addBox adminOnly"><h3>Yeni İşlem Ekle</h3><div class="form"><select id="tradeType" onchange="tradeTypeChanged()"><option value="ALIS">ALIŞ</option><option value="SATIS">SATIŞ</option></select><input id="symbol" placeholder="Hisse kodu (KCHOL)"><input id="company" placeholder="Şirket adı"><input id="date" type="date"><input id="buy" type="number" step=".01" placeholder="İşlem fiyatı"><input id="qty" type="number" step=".01" placeholder="Adet"><input id="price" type="number" step=".01" placeholder="Güncel fiyat (alışta)"><button class="full" onclick="addTrade()">İşlemi Kaydet</button></div><div class="notice">Aynı hisseye yeni alış girildiğinde ortalama maliyet otomatik hesaplanır. Satışta mevcut adetten fazla satış yapılamaz.</div></div></div>
+<div class="panel section"><div class="panelHead"><h2>Gerçekleşen İşlemler / Kâr-Zarar</h2><span class="badge">Satışlar</span></div><div class="tableWrap"><table><thead><tr><th>Hisse</th><th>Alış</th><th>Satış</th><th>Adet</th><th>Satış Tarihi</th><th>Gerçekleşen K/Z</th></tr></thead><tbody id="closedRows"></tbody></table></div></div><div class="panel section"><div class="panelHead"><h2>İşlem Geçmişi</h2><span class="badge">Alış / Satış</span></div><div class="tableWrap"><table><thead><tr><th>Tarih</th><th>Hisse</th><th>İşlem</th><th>Fiyat</th><th>Adet</th><th>Tutar</th></tr></thead><tbody id="tradeRows"></tbody></table></div></div>
+</div><div>
+<div class="panel analysisCard"><div class="panelHead"><h2>Hisse Analiz Görseli</h2><span class="badge">Premium Analiz</span></div><select id="analysisSymbol" onchange="analysisChanged()"></select><div id="analysisEmpty" class="empty">Hisse seçildiğinde analiz görseli burada gösterilir.</div><img id="analysisImage" class="hide" alt="Hisse analiz görseli" onclick="openCurrentAnalysis()" style="width:100%;border-radius:14px;border:1px solid #e7eaf0;display:block"><div class="adminOnly" style="margin-top:12px"><input id="analysisFile" type="file" accept="image/png,image/jpeg,image/webp" style="width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:10px;background:#fff"><button class="save" onclick="uploadAnalysisImage()">Analiz Görselini Yükle / Değiştir</button><div class="notice">PNG, JPG veya WEBP yükleyebilirsin. Yeni görsel yüklendiğinde bu hisse için eskisinin yerine geçer.</div></div></div>
+<div class="panel sharePanel adminOnly"><div class="panelHead"><h2>Danışan Bilgileri</h2></div><div class="clientEdit"><input id="client" placeholder="Danışan adı"><button onclick="saveClient()">Adı Kaydet</button></div><div class="sharebox" style="margin-top:9px"><input id="shareLink" readonly><button onclick="copyShare()">Linki Kopyala</button></div><input id="lastUpdate" disabled style="width:100%;margin-top:9px;border:1px solid #dfe3ea;border-radius:10px;padding:10px;background:#f8f9fb"><div class="notice">Paylaşım linki salt okunurdur; danışan yönetici alanlarını göremez.</div></div>
+</div></div>
+<select id="clientSelect" class="hide" onchange="switchClient()"></select>
+</main></div>
+<aside id="kapRight" class="kapRail right"><div class="kapBox"><h3>Portföyümün KAP Haberleri</h3><div class="kapSub">Sahip olduğun hisselere özel</div><div id="kapHoldings" class="kapHoldings"></div><div id="kapPortfolioItems"><div class="kapItem"><div class="kapCode">PORTFÖY TAKİBİ</div><div class="kapTitle">Portföy KAP bildirimleri yükleniyor…</div></div></div><a class="kapFooter" href="https://www.kap.org.tr/tr/bildirim-sorgu" target="_blank" rel="noopener">Detaylı KAP sorgulama ↗</a></div></aside>
+<div id="analysisModal" class="analysisModal hide" onclick="modalBackdropClose(event)"><div class="analysisModalBox"><button class="analysisModalClose" onclick="closeAnalysisModal()" aria-label="Kapat">×</button><img id="analysisModalImg" class="analysisModalImg" alt="Hisse analiz görseli"></div></div>
+<script>
+const SUPABASE_URL='https://dbwbwgmbikpwbcgypdoe.supabase.co';
+const SUPABASE_KEY='sb_publishable_7dA5bK-Cn66YrmYHW2wiqg_XE8L3AiD';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id), money=n=>new Intl.NumberFormat('tr-TR',{style:'currency',currency:'TRY',maximumFractionDigits:2}).format(Number(n)||0), pct=n=>'%' + (Number(n)||0).toLocaleString('tr-TR',{maximumFractionDigits:2});
+let clients=[], active=null, positions=[], closed=[], trades=[], analyses={}, viewer=false;
+const shareCode=new URLSearchParams(location.search).get('share');
+let loginMode='client';
+function msg(t){$('authMsg').textContent=t}
+function err(e){console.error(e);alert(e?.message||String(e))}
+function setLoginMode(mode){
+ loginMode=mode; const admin=mode==='admin';
+ $('loginTitle').textContent=admin?'Yönetici Girişi':'Danışan Girişi';
+ $('email').type=admin?'email':'text'; $('email').value=''; $('password').value='';
+ $('email').placeholder=admin?'E-posta':'Kullanıcı adı';
+ $('signupBtn').classList.toggle('hide',!admin);
+ $('adminTab').style.background=admin?'#315efb':'#edf0f5'; $('adminTab').style.color=admin?'white':'#172033';
+ $('clientTab').style.background=!admin?'#315efb':'#edf0f5'; $('clientTab').style.color=!admin?'white':'#172033';
+ msg(admin?'Yönetici e-posta adresiniz ve şifrenizle giriş yapın.':'Size verilen kullanıcı adı ve şifre ile giriş yapın.');
+}
+async function signup(){try{const email=$('email').value.trim(),password=$('password').value;if(!email||password.length<6)return msg('E-posta ve en az 6 karakterli şifre gir.');const {data,error}=await sb.auth.signUp({email,password});if(error)throw error;if(data.session){await routeSession(data.session)}else msg('Hesap oluşturuldu. Gerekirse e-posta doğrulamasını tamamlayıp giriş yapın.')}catch(e){err(e)}}
+async function login(){try{
+ let user=$('email').value.trim(),password=$('password').value;
+ if(!user||!password)return msg('Kullanıcı bilgilerini girin.');
+ const email=loginMode==='client'?(user.includes('@')?user:user.toLowerCase().replace(/\s+/g,'')+'@danisan.local'):user;
+ const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)throw error;
+ await routeSession(data.session,loginMode);
+}catch(e){msg('Giriş yapılamadı. Kullanıcı adı veya şifreyi kontrol edin.');console.error(e)}}
+async function logout(){await sb.auth.signOut();location.href=location.pathname}
+$('logoutBtn').onclick=logout;
+async function boot(){
+ if(shareCode){viewer=true;document.body.classList.add('viewer');$('app').classList.remove('hide');$('viewerTitle').classList.remove('hide');await loadViewer();return}
+ const {data:{session}}=await sb.auth.getSession();
+ if(session)await routeSession(session);else{$('authBox').classList.remove('hide');setLoginMode('client')}
+}
+async function routeSession(session,requestedMode){
+ const uid=session?.user?.id;if(!uid)return;
+ const {data:client,error}=await sb.from('danisanlar').select('*').eq('auth_user_id',uid).maybeSingle();
+ if(error)throw error;
+ if(client){await startClient(client);return}
+ if(requestedMode==='client'){await sb.auth.signOut();$('authBox').classList.remove('hide');return msg('Bu hesap bir danışan hesabına bağlı değil.')}
+ await startAdmin();
+}
+async function startAdmin(){viewer=false;document.body.classList.remove('viewer');$('authBox').classList.add('hide');$('app').classList.remove('hide');$('viewerTitle').classList.add('hide');$('logoutBtn').classList.remove('hide');await loadClients()}
+async function startClient(client){
+ viewer=true;document.body.classList.add('viewer');$('authBox').classList.add('hide');$('app').classList.remove('hide');$('viewerTitle').classList.remove('hide');$('logoutBtn').classList.remove('hide');
+ active={...client,name:client.ad_soyad};
+ const [p,k,i,g]=await Promise.all([
+  sb.from('pozisyonlar').select('*').eq('danisan_id',client.id).order('created_at',{ascending:false}),
+  sb.from('kapanan_pozisyonlar').select('*').eq('danisan_id',client.id).order('satis_tarihi',{ascending:false}),
+  sb.from('islemler').select('*').eq('danisan_id',client.id).order('islem_tarihi',{ascending:false}).order('created_at',{ascending:false}),
+  sb.from('analiz_gorselleri').select('*').eq('danisan_id',client.id)
+ ]);
+ for(const r of [p,k,i,g])if(r.error)throw r.error;
+ positions=(p.data||[]).map(x=>({...x,symbol:x.hisse_kodu,company:x.hisse_adi,date:x.alis_tarihi,buy:+x.alis_fiyati,qty:+x.adet,price:+x.guncel_fiyat}));
+ closed=(k.data||[]).map(x=>({...x,symbol:x.hisse_kodu,buy:+x.alis_fiyati,sell:+x.satis_fiyati,qty:+x.adet,sellDate:x.satis_tarihi,pnl:(+x.satis_fiyati-(+x.alis_fiyati))*(+x.adet)}));
+ trades=i.data||[];analyses={};for(const x of g.data||[]){const pos=positions.find(p=>(p.hisse_kodu||'').toUpperCase()===(x.hisse_kodu||'').toUpperCase());if(pos)analyses[pos.id]={image:x}}
+ $('viewerName').textContent=active.name+' – Portföy Takibi';render();loadAnalysis();
+}
+async function loadClients(){const {data,error}=await sb.from('danisanlar').select('*').order('created_at');if(error)throw error;clients=data||[];if(!clients.length){active=null;render();return}if(!active||!clients.some(c=>c.id===active.id))active=clients[0];await loadActive()}
+async function loadActive(){if(!active){positions=[];closed=[];trades=[];analyses={};render();return}const [p,k,i,g]=await Promise.all([sb.from('pozisyonlar').select('*').eq('danisan_id',active.id).order('created_at',{ascending:false}),sb.from('kapanan_pozisyonlar').select('*').eq('danisan_id',active.id).order('satis_tarihi',{ascending:false}),sb.from('islemler').select('*').eq('danisan_id',active.id).order('islem_tarihi',{ascending:false}).order('created_at',{ascending:false}),sb.from('analiz_gorselleri').select('*').eq('danisan_id',active.id)]);if(p.error)throw p.error;if(k.error)throw k.error;if(i.error)throw i.error;if(g.error)throw g.error;positions=p.data||[];closed=k.data||[];trades=i.data||[];analyses={};for(const x of g.data||[]){const pos=positions.find(p=>(p.hisse_kodu||'').toUpperCase()===(x.hisse_kodu||'').toUpperCase());if(pos)analyses[pos.id]={image:x}}render();loadAnalysis()}
+async function loadViewer(){try{const {data,error}=await sb.rpc('danisan_portfoyu',{p_paylasim_kodu:shareCode});if(error)throw error;if(!data||!data.danisan){$('viewerName').textContent='Geçersiz veya pasif paylaşım linki';return}active={...data.danisan,name:data.danisan.ad_soyad};positions=(data.pozisyonlar||[]).map(p=>({...p,symbol:p.hisse_kodu,company:p.hisse_adi,date:p.alis_tarihi,buy:+p.alis_fiyati,qty:+p.adet,price:+p.guncel_fiyat}));closed=(data.kapanan_pozisyonlar||[]).map(k=>({...k,symbol:k.hisse_kodu,buy:+k.alis_fiyati,sell:+k.satis_fiyati,qty:+k.adet,sellDate:k.satis_tarihi,pnl:(+k.satis_fiyati-(+k.alis_fiyati))*(+k.adet)}));trades=data.islemler||[];analyses={};for(const g of data.analiz_gorselleri||[]){const pos=positions.find(p=>(p.hisse_kodu||'').toUpperCase()===(g.hisse_kodu||'').toUpperCase());if(pos)analyses[pos.id]={image:g}};$('viewerName').textContent=active.name+' – Portföy Takibi';render();loadAnalysis()}catch(e){err(e)}}
+function normP(p){return viewer?p:{...p,symbol:p.hisse_kodu,company:p.hisse_adi,date:p.alis_tarihi,buy:+p.alis_fiyati,qty:+p.adet,price:+p.guncel_fiyat}}
+function render(){if(!viewer){const cl=$('clientList');if(cl)cl.innerHTML=clients.map(c=>`<button class="clientChip ${active&&c.id===active.id?'active':''}" onclick="selectClient('${c.id}')">${c.ad_soyad}</button>`).join('')||'<div style="color:#8b99b0;font-size:13px">Henüz danışan yok.</div>';const hn=$('heroClient'),hu=$('heroUpdate');if(hn)hn.textContent=active?active.ad_soyad:'Danışan seçilmedi';if(hu)hu.textContent=active?'Son güncelleme: '+new Date(active.updated_at).toLocaleString('tr-TR'):'Yeni danışan ekleyerek başlayın.';}if(!active){$('clientSelect').innerHTML='';$('client').value='';$('rows').innerHTML='<tr><td colspan="9">Önce danışan ekleyin.</td></tr>';$('closedRows').innerHTML='';if($('tradeRows'))$('tradeRows').innerHTML='';['invested','current','pnl'].forEach(x=>$(x).textContent=money(0));$('return').textContent='%0';$('shareLink').value='';return}if(!viewer){$('clientSelect').innerHTML=clients.map(c=>`<option value="${c.id}" ${c.id===active.id?'selected':''}>${c.ad_soyad}</option>`).join('');$('client').value=active.ad_soyad;$('lastUpdate').value='Son güncelleme: '+new Date(active.updated_at).toLocaleString('tr-TR');$('shareLink').value=location.origin+location.pathname+'?share='+active.paylasim_kodu}
+let inv=0,cur=0;const pp=positions.map(normP);$('rows').innerHTML=pp.map(p=>{const cost=p.buy*p.qty,val=p.price*p.qty,d=val-cost,r=cost?d/cost*100:0;inv+=cost;cur+=val;return `<tr ${viewer?`data-analysis-id="${p.id}" onclick="openAnalysisForPosition('${p.id}')" title="${p.symbol} analizini aç"`:''}><td><b>${p.symbol}</b><br><small>${p.company||''}</small></td><td>${p.date||''}</td><td>${money(p.buy)}</td><td>${p.qty}</td><td>${money(cost)}</td><td>${money(p.price)}</td><td class="${d>=0?'pos':'neg'}">${money(d)}</td><td class="${r>=0?'pos':'neg'}">${pct(r)}</td><td class="adminOnly"><div class="actions"><button onclick="editPrice('${p.id}')">Fiyat</button><button class="secondary" onclick="closePos('${p.id}')">Sat</button><button class="danger" onclick="delPos('${p.id}')">Sil</button></div></td></tr>`}).join('')||'<tr><td colspan="9" style="text-align:center;color:#6b7280">Henüz açık pozisyon yok.</td></tr>';const pnl=cur-inv,r=inv?pnl/inv*100:0;$('invested').textContent=money(inv);$('current').textContent=money(cur);$('pnl').textContent=money(pnl);$('pnl').className=pnl>=0?'pos':'neg';$('return').textContent=pct(r);$('return').className=r>=0?'pos':'neg';const selected=$('analysisSymbol').value;$('analysisSymbol').innerHTML='<option value="">Hisse seçin</option>'+pp.map(p=>`<option value="${p.id}">${p.symbol}</option>`).join('');if(pp.some(p=>p.id===selected))$('analysisSymbol').value=selected;$('closedRows').innerHTML=closed.map(x=>{const k=viewer?x:{symbol:x.hisse_kodu,buy:+x.alis_fiyati,sell:+x.satis_fiyati,qty:+x.adet,sellDate:x.satis_tarihi,pnl:(+x.satis_fiyati-(+x.alis_fiyati))*(+x.adet)};return `<tr><td>${k.symbol}</td><td>${money(k.buy)}</td><td>${money(k.sell)}</td><td>${k.qty}</td><td>${k.sellDate||''}</td><td class="${k.pnl>=0?'pos':'neg'}">${money(k.pnl)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz gerçekleşen satış yok.</td></tr>';if($('tradeRows'))$('tradeRows').innerHTML=(trades||[]).map(t=>{const type=t.islem_turu||t.type||'',price=+(t.fiyat||t.price||0),qty=+(t.adet||t.qty||0),sym=t.hisse_kodu||t.symbol||'',dt=t.islem_tarihi||t.date||'';return `<tr><td>${dt}</td><td><b>${sym}</b></td><td class="${type==='ALIS'?'pos':'neg'}"><b>${type}</b></td><td>${money(price)}</td><td>${qty}</td><td>${money(price*qty)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz işlem kaydı yok.</td></tr>';renderKapRails()}
+
+function renderKapRails(){
+ if(!viewer)return;
+ const el=$('kapHoldings'); if(!el)return;
+ const syms=[...new Set((positions||[]).map(p=>(p.hisse_kodu||p.symbol||'').toUpperCase()).filter(Boolean))];
+ el.innerHTML=syms.length?syms.map(x=>`<span class="kapHolding">${x}</span>`).join(''):'<span class="kapHolding">Pozisyon yok</span>';
+}
+
+async function addClient(){const name=prompt('Yeni danışanın adı:');if(!name?.trim())return;try{const {data:{user}}=await sb.auth.getUser();const {data,error}=await sb.from('danisanlar').insert({ad_soyad:name.trim(),owner_id:user.id}).select().single();if(error)throw error;active=data;await loadClients()}catch(e){err(e)}}
+async function switchClient(){active=clients.find(c=>c.id===$('clientSelect').value);await loadActive()}
+async function selectClient(id){active=clients.find(c=>c.id===id);await loadActive()}
+async function saveClient(){try{const {data,error}=await sb.from('danisanlar').update({ad_soyad:$('client').value.trim()||'Danışan',updated_at:new Date().toISOString()}).eq('id',active.id).select().single();if(error)throw error;active=data;await loadClients()}catch(e){err(e)}}
+async function deleteClient(){if(!confirm(active.ad_soyad+' silinsin mi? Tüm kayıtları silinir.'))return;try{const {error}=await sb.from('danisanlar').delete().eq('id',active.id);if(error)throw error;active=null;await loadClients()}catch(e){err(e)}}
+function tradeTypeChanged(){const sell=$('tradeType').value==='SATIS';$('company').disabled=sell;$('price').disabled=sell;$('company').placeholder=sell?'Satışta otomatik':'Şirket adı';$('price').placeholder=sell?'Satışta gerekmez':'Güncel fiyat (alışta)'}
+async function addTrade(){
+ const type=$('tradeType').value,symbol=$('symbol').value.trim().toUpperCase(),company=$('company').value.trim(),date=$('date').value,price=+$('buy').value,qty=+$('qty').value,current=+$('price').value||price;
+ if(!active)return alert('Önce danışan seçin.'); if(!symbol||!date||price<=0||qty<=0)return alert('Hisse, tarih, fiyat ve adet zorunlu.');
+ try{
+  const existing=positions.find(p=>(p.hisse_kodu||'').toUpperCase()===symbol);
+  if(type==='ALIS'){
+   const log=await sb.from('islemler').insert({danisan_id:active.id,hisse_kodu:symbol,hisse_adi:company||existing?.hisse_adi||'',islem_turu:'ALIS',islem_tarihi:date,fiyat:price,adet:qty}); if(log.error)throw log.error;
+   if(existing){const oldQty=+existing.adet,oldAvg=+existing.alis_fiyati,newQty=oldQty+qty,newAvg=((oldQty*oldAvg)+(qty*price))/newQty;const u=await sb.from('pozisyonlar').update({adet:newQty,alis_fiyati:newAvg,guncel_fiyat:current||+existing.guncel_fiyat,updated_at:new Date().toISOString()}).eq('id',existing.id);if(u.error)throw u.error}
+   else {const ins=await sb.from('pozisyonlar').insert({danisan_id:active.id,hisse_kodu:symbol,hisse_adi:company,alis_tarihi:date,alis_fiyati:price,adet:qty,guncel_fiyat:current});if(ins.error)throw ins.error}
+  } else {
+   if(!existing)return alert(symbol+' için açık pozisyon bulunamadı.'); if(qty>+existing.adet)return alert('Satış adedi mevcut '+existing.adet+' adetten fazla olamaz.');
+   const log=await sb.from('islemler').insert({danisan_id:active.id,hisse_kodu:symbol,hisse_adi:existing.hisse_adi||company,islem_turu:'SATIS',islem_tarihi:date,fiyat:price,adet:qty});if(log.error)throw log.error;
+   const c=await sb.from('kapanan_pozisyonlar').insert({danisan_id:active.id,hisse_kodu:symbol,hisse_adi:existing.hisse_adi,alis_tarihi:existing.alis_tarihi,alis_fiyati:existing.alis_fiyati,satis_tarihi:date,satis_fiyati:price,adet:qty});if(c.error)throw c.error;
+   if(qty===+existing.adet){const d=await sb.from('pozisyonlar').delete().eq('id',existing.id);if(d.error)throw d.error}else{const u=await sb.from('pozisyonlar').update({adet:+existing.adet-qty,updated_at:new Date().toISOString()}).eq('id',existing.id);if(u.error)throw u.error}
+  }
+  ['symbol','company','date','buy','qty','price'].forEach(x=>$(x).value='');$('tradeType').value='ALIS';tradeTypeChanged();await touch();await loadActive();
+ }catch(e){err(e)}
+}
+async function editPrice(id){const p=positions.find(x=>x.id===id),v=prompt((p.hisse_kodu||'Hisse')+' güncel fiyat:',p.guncel_fiyat);if(v===null||isNaN(+v))return;try{const {error}=await sb.from('pozisyonlar').update({guncel_fiyat:+v,updated_at:new Date().toISOString()}).eq('id',id);if(error)throw error;await touch();await loadActive()}catch(e){err(e)}}
+async function delPos(id){if(!confirm('Pozisyon silinsin mi?'))return;try{const {error}=await sb.from('pozisyonlar').delete().eq('id',id);if(error)throw error;await touch();await loadActive()}catch(e){err(e)}}
+async function closePos(id){const p=positions.find(x=>x.id===id),sell=prompt(p.hisse_kodu+' satış fiyatı:'),qty=prompt('Satılan adet:',p.adet);if(sell===null||qty===null)return;const s=+sell,q=+qty;if(!s||q<=0||q>+p.adet)return alert('Geçersiz değer.');const sd=prompt('Satış tarihi (YYYY-MM-DD):',new Date().toISOString().slice(0,10));if(!sd)return;try{const lg=await sb.from('islemler').insert({danisan_id:active.id,hisse_kodu:p.hisse_kodu,hisse_adi:p.hisse_adi,islem_turu:'SATIS',islem_tarihi:sd,fiyat:s,adet:q});if(lg.error)throw lg.error;const {error}=await sb.from('kapanan_pozisyonlar').insert({danisan_id:active.id,hisse_kodu:p.hisse_kodu,hisse_adi:p.hisse_adi,alis_tarihi:p.alis_tarihi,alis_fiyati:p.alis_fiyati,satis_tarihi:sd,satis_fiyati:s,adet:q});if(error)throw error;if(q===+p.adet){const d=await sb.from('pozisyonlar').delete().eq('id',id);if(d.error)throw d.error}else{const u=await sb.from('pozisyonlar').update({adet:+p.adet-q,updated_at:new Date().toISOString()}).eq('id',id);if(u.error)throw u.error}await touch();await loadActive()}catch(e){err(e)}}
+async function uploadAnalysisImage(){
+ const id=$('analysisSymbol').value,file=$('analysisFile').files[0];
+ if(!id)return alert('Önce hisse seçin.');
+ if(!file)return alert('Önce analiz görselini seçin.');
+ if(file.size>8*1024*1024)return alert('Görsel en fazla 8 MB olabilir.');
+ try{
+  const p=positions.find(x=>x.id===id),ext=(file.name.split('.').pop()||'png').toLowerCase();
+  const path=`${active.id}/${id}/analiz.${ext}`;
+  const up=await sb.storage.from('analiz-gorselleri').upload(path,file,{upsert:true,contentType:file.type,cacheControl:'60'});
+  if(up.error)throw up.error;
+  const pub=sb.storage.from('analiz-gorselleri').getPublicUrl(path);
+  const url=pub.data.publicUrl+'?v='+Date.now();
+  const row={danisan_id:active.id,hisse_kodu:p.hisse_kodu,gorsel_url:url,updated_at:new Date().toISOString()};
+  const q=await sb.from('analiz_gorselleri').upsert(row,{onConflict:'danisan_id,hisse_kodu'});
+  if(q.error)throw q.error;
+  await touch();await loadActive();$('analysisSymbol').value=id;loadAnalysis();$('analysisFile').value='';alert((p?.hisse_kodu||'Hisse')+' analiz görseli kaydedildi.');
+ }catch(e){err(e)}
+}
+function analysisChanged(){loadAnalysis();if(viewer&&$('analysisSymbol').value){setTimeout(openCurrentAnalysis,80)}}
+function openAnalysisForPosition(id){
+ if(!viewer)return;
+ const p=positions.map(normP).find(x=>x.id===id),a=analyses[id]||{},url=(a.image&&a.image.gorsel_url)||'';
+ if(!url){alert((p?.symbol||'Bu hisse')+' için henüz analiz yayınlanmamıştır.');return}
+ $('analysisSymbol').value=id;
+ const m=$('analysisModal'),im=$('analysisModalImg');im.src=url;m.classList.remove('hide');document.body.style.overflow='hidden';
+}
+function openCurrentAnalysis(){const id=$('analysisSymbol').value,a=analyses[id]||{},url=(a.image&&a.image.gorsel_url)||'';if(!url)return;const m=$('analysisModal'),im=$('analysisModalImg');im.src=url;m.classList.remove('hide');document.body.style.overflow='hidden'}
+function closeAnalysisModal(){$('analysisModal').classList.add('hide');$('analysisModalImg').removeAttribute('src');document.body.style.overflow=''}
+function modalBackdropClose(e){if(e.target===$('analysisModal'))closeAnalysisModal()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAnalysisModal()});
+function loadAnalysis(){
+ const id=$('analysisSymbol').value,a=analyses[id]||{},url=(a.image&&a.image.gorsel_url)||'';
+ const img=$('analysisImage'),empty=$('analysisEmpty');
+ if(url){img.src=url;img.classList.remove('hide');empty.classList.add('hide')}else{img.removeAttribute('src');img.classList.add('hide');empty.classList.remove('hide');empty.textContent=id?'Bu hisse için henüz analiz görseli yüklenmedi.':'Hisse seçildiğinde analiz görseli burada gösterilir.'}
+}
+async function touch(){if(!active)return;const now=new Date().toISOString();await sb.from('danisanlar').update({updated_at:now}).eq('id',active.id);active.updated_at=now}
+async function copyShare(){try{await navigator.clipboard.writeText($('shareLink').value);alert('Danışan linki kopyalandı.')}catch{prompt('Bu linki kopyala:',$('shareLink').value)}}
+boot();
+
+async function loadKapNews(){
+  if(!document.body.classList.contains('viewer')) return;
+  const latestEl=$('kapLatestItems'), portEl=$('kapPortfolioItems'), statusEl=$('kapStatus');
+  const syms=[...new Set(positions.map(p=>(p.hisse_kodu||p.symbol||'').toUpperCase()).filter(Boolean))];
+  const card=(x)=>{const code=(x.symbols||[]).find(z=>syms.includes(z))||(x.symbols||[])[0]||'KAP';const safe=(v)=>String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));return `<a class="kapItem" href="${safe(x.url||'https://www.kap.org.tr/tr/bildirim-sorgu')}" target="_blank" rel="noopener"><div class="kapCode">${safe(code)}</div><div class="kapTitle">${safe(x.title||'KAP bildirimi')}</div><div class="kapMeta">${safe(x.date||'Yeni bildirim')} · KAP ↗</div></a>`};
+  try{
+    const [allR,portR]=await Promise.all([fetch('/.netlify/functions/kap'),fetch('/.netlify/functions/kap?symbols='+encodeURIComponent(syms.join(',')))]);
+    const all=await allR.json(), port=await portR.json();
+    if(!all.ok) throw new Error(all.error||'KAP verisi alınamadı');
+    if(statusEl)statusEl.innerHTML='<span class="kapDot" style="background:#38d996"></span> KAP bağlantısı aktif';
+    if(latestEl)latestEl.innerHTML=(all.items||[]).length?(all.items||[]).slice(0,8).map(card).join(''):'<div class="kapItem"><div class="kapTitle">Şu anda listelenecek bildirim bulunamadı.</div></div>';
+    if(portEl)portEl.innerHTML=(port.items||[]).length?(port.items||[]).slice(0,8).map(card).join(''):'<div class="kapItem"><div class="kapCode">PORTFÖY</div><div class="kapTitle">Portföyündeki hisseler için son akışta eşleşen KAP bildirimi bulunamadı.</div></div>';
+  }catch(e){
+    if(statusEl)statusEl.innerHTML='<span class="kapDot" style="background:#ff6677"></span> KAP bağlantısı geçici olarak kullanılamıyor';
+    if(latestEl)latestEl.innerHTML='<a class="kapItem" href="https://www.kap.org.tr/tr/bildirim-sorgu" target="_blank" rel="noopener"><div class="kapCode">KAP</div><div class="kapTitle">Resmî KAP sayfasında bildirimleri görüntüle</div><div class="kapMeta">KAP ↗</div></a>';
+    if(portEl)portEl.innerHTML='<div class="kapItem"><div class="kapTitle">Canlı veri alınamadı. Biraz sonra yeniden deneyin.</div></div>';
+  }
+}
+const _oldRenderKapHoldings=typeof renderKapHoldings==='function'?renderKapHoldings:null;
+if(_oldRenderKapHoldings){renderKapHoldings=function(){_oldRenderKapHoldings();clearTimeout(window.__kapTimer);window.__kapTimer=setTimeout(loadKapNews,250)}}
+</script></body></html>
