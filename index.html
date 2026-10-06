@@ -9,7 +9,7 @@
 .viewer .analysisCard #analysisImage{cursor:pointer}.viewer .analysisCard #analysisImage:hover{filter:brightness(.96)}
 @media(max-width:650px){.analysisModal{padding:12px}.analysisModalBox{max-width:96vw}.analysisModalImg{max-height:88vh;border-radius:12px}.analysisModalClose{right:4px;top:4px;width:38px;height:38px;background:rgba(255,255,255,.94)}}
 
-/* ===== V9 PREMIUM - DANISAN EKRANI ===== */
+/* ===== V11 DANIŞMAN PORTALI - DANISAN EKRANI ===== */
 .viewer{--vbg:#07101f;--vcard:#0d192c;--vcard2:#101f36;--vline:#203451;--vtext:#f5f8ff;--vmuted:#91a2bd;--vblue:#4d8dff;--vcyan:#3dd6d0;--vgood:#38d996;--vbad:#ff6677;background:radial-gradient(circle at 10% 0%,#14294b 0,transparent 32%),radial-gradient(circle at 92% 15%,#102e42 0,transparent 28%),var(--vbg);min-height:100vh;color:var(--vtext)}
 .viewer .topbar{height:76px;background:rgba(7,16,31,.86);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(18px);padding:0 max(22px,calc((100vw - 1200px)/2));box-shadow:0 10px 35px rgba(0,0,0,.18)}
 .viewer .brand{font-size:17px;letter-spacing:.01em}.viewer .brand span:last-child{background:linear-gradient(135deg,#315efb,#31b8fb)!important;box-shadow:0 6px 18px rgba(49,94,251,.3)}
@@ -37,21 +37,43 @@
 .viewer #rows tr[data-analysis-id]:hover{background:rgba(77,141,255,.10)}
 .viewer #rows tr[data-analysis-id] td:first-child b{text-decoration:underline;text-decoration-color:rgba(77,141,255,.55);text-underline-offset:4px}
 
-/* V9.2 KAP yan akışları */
-.kapRail{display:none}.viewer .kapRail{display:block;position:fixed;top:92px;width:245px;bottom:24px;overflow:auto;z-index:8}.viewer .kapRail.left{left:18px}.viewer .kapRail.right{right:18px}.kapBox{background:#101b30;color:#eef4ff;border:1px solid #253756;border-radius:18px;padding:14px;box-shadow:0 12px 30px #0b122033}.kapBox h3{margin:0 0 4px;font-size:14px}.kapBox .kapSub{font-size:10px;color:#91a2be;margin-bottom:12px}.kapItem{display:block;text-decoration:none;color:inherit;background:#16243d;border:1px solid #263957;border-radius:12px;padding:11px;margin-top:9px;transition:.15s}.kapItem:hover{transform:translateY(-1px);border-color:#4e72b6}.kapCode{font-weight:900;font-size:12px;color:#8fb0ff}.kapTitle{font-size:12px;line-height:1.35;margin-top:5px}.kapMeta{font-size:10px;color:#91a2be;margin-top:6px}.kapLive{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:#f5c451;background:#2b2a20;border-radius:999px;padding:5px 7px;margin-top:8px}.kapDot{width:6px;height:6px;border-radius:50%;background:#f5c451}.viewer .layout{max-width:calc(100% - 550px)}.viewer .contentGrid{grid-template-columns:1fr!important}.viewer .analysisCard{display:none!important}.kapHoldings{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}.kapHolding{font-size:10px;font-weight:850;padding:5px 7px;border-radius:999px;background:#24395e;color:#bcd0ff}.kapFooter{display:block;margin-top:12px;text-align:center;color:#a9b8cf;font-size:10px;text-decoration:none}.viewer #rows tr{cursor:pointer}.viewer #rows tr:hover{background:#f6f8ff}
+/* V10 manuel haber yan akışları */
+.kapRail{display:none}.viewer .kapRail{display:block;position:fixed;top:92px;width:245px;bottom:24px;overflow:auto;z-index:8}.viewer .kapRail.left{left:18px}.viewer .kapRail.right{right:18px}.kapBox{background:#101b30;color:#eef4ff;border:1px solid #253756;border-radius:18px;padding:14px;box-shadow:0 12px 30px #0b122033}.kapBox h3{margin:0 0 4px;font-size:14px}.kapBox .kapSub{font-size:10px;color:#91a2be;margin-bottom:12px}.kapItem{display:block;text-decoration:none;color:inherit;background:#16243d;border:1px solid #263957;border-radius:12px;padding:11px;margin-top:9px;transition:.15s}.kapItem:hover{transform:translateY(-1px);border-color:#4e72b6}.kapCode{font-weight:900;font-size:12px;color:#8fb0ff}.kapSource{display:inline-block;font-size:9px;font-weight:900;padding:4px 6px;border-radius:999px;background:#24395e;color:#bcd0ff;margin-top:7px}.kapTitle{font-size:12px;line-height:1.35;margin-top:5px}.kapMeta{font-size:10px;color:#91a2be;margin-top:6px}.kapLive{display:none!important;;align-items:center;gap:5px;font-size:10px;color:#f5c451;background:#2b2a20;border-radius:999px;padding:5px 7px;margin-top:8px}.kapDot{width:6px;height:6px;border-radius:50%;background:#f5c451}.viewer .layout{max-width:calc(100% - 550px)}.viewer .contentGrid{grid-template-columns:1fr!important}.viewer .analysisCard{display:none!important}.kapHoldings{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}.kapHolding{font-size:10px;font-weight:850;padding:5px 7px;border-radius:999px;background:#24395e;color:#bcd0ff}.kapFooter{display:block;margin-top:12px;text-align:center;color:#a9b8cf;font-size:10px;text-decoration:none}.viewer #rows tr{cursor:pointer}.viewer #rows tr:hover{background:#f6f8ff}
 @media(max-width:1450px){.viewer .kapRail{position:static;width:auto;bottom:auto}.viewer .kapRail.left,.viewer .kapRail.right{left:auto;right:auto}.viewer .kapRail.left{margin:16px 16px 0}.viewer .kapRail.right{margin:0 16px 16px}.viewer .layout{max-width:1200px}.viewer .kapBox{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.viewer .kapBox h3,.viewer .kapBox .kapSub,.viewer .kapBox .kapHoldings,.viewer .kapBox .kapLive,.viewer .kapBox .kapFooter{grid-column:1/-1}.kapItem{margin-top:0}}
 @media(max-width:750px){.viewer .kapBox{grid-template-columns:1fr}.viewer .kapRail.left{margin:10px 10px 0}.viewer .kapRail.right{margin:0 10px 10px}}
-</style></head><body>
-<div class="topbar"><div class="brand">📈 <span>Borsa Danışman Takip Paneli</span><span style="font-size:10px;background:#315efb;padding:4px 7px;border-radius:999px">V9 PREMIUM</span></div><button id="logoutBtn" class="hide">Çıkış</button></div>
+</style><style id="v11portal">
+.portalV11{margin-top:16px}.portalTabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.portalTab{border:1px solid var(--line);background:#0d1730;color:#cfe0ff;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}.portalTab.active{background:#315efb;color:#fff}.portalPage{display:none}.portalPage.active{display:block}.resourceGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.resourceCard{display:block;text-decoration:none;color:inherit;background:#101c34;border:1px solid var(--line);border-radius:16px;padding:16px}.resourceCard:hover{border-color:#4d8dff}.resourceCard h3{margin:0 0 7px;font-size:16px}.resourceCard p{margin:0;color:var(--muted);font-size:12px}.resourceMeta{margin-top:10px;font-size:11px;color:#8fb0ff;font-weight:800}.portalAdminGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:900px){.portalAdminGrid{grid-template-columns:1fr}}
+</style>
+<style id="v11-top-fix">
+.main>.portalV11{margin-top:0!important;margin-bottom:16px!important;padding:10px 12px!important;background:linear-gradient(135deg,#101b30,#132743)!important;border:1px solid #29456e!important;border-radius:16px!important}
+.main>.portalV11>.panelHead{display:none!important}
+.main>.portalV11>.portalTabs{margin:0!important;display:flex!important;gap:8px!important}
+.main>.portalV11>.portalTabs .portalTab{flex:0 0 auto}
+.main>.portalV11>.portalPage{margin-top:12px;padding:12px;border-top:1px solid #29456e}
+.viewer .main>.portalV11{display:block!important}
+@media(max-width:650px){.main>.portalV11>.portalTabs{overflow-x:auto;flex-wrap:nowrap!important}.main>.portalV11>.portalTabs .portalTab{white-space:nowrap}}
+</style>
+</head><body>
+<div class="topbar"><div class="brand">📈 <span>Borsa Danışman Takip Paneli</span><span style="font-size:10px;background:#315efb;padding:4px 7px;border-radius:999px">V11 DANIŞMAN PORTALI</span></div><button id="logoutBtn" class="hide">Çıkış</button></div>
 <div id="authBox" class="auth hide"><div class="authCard">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px"><button id="clientTab" onclick="setLoginMode('client')" style="padding:11px;border:0;border-radius:10px;background:#315efb;color:white;font-weight:800;cursor:pointer">Danışan Girişi</button><button id="adminTab" onclick="setLoginMode('admin')" style="padding:11px;border:0;border-radius:10px;background:#edf0f5;color:#172033;font-weight:800;cursor:pointer">Yönetici Girişi</button></div>
 <h2 id="loginTitle" style="margin:0">Danışan Girişi</h2><div id="authMsg" class="status">Size verilen kullanıcı adı ve şifre ile giriş yapın.</div>
 <div class="authGrid"><input id="email" placeholder="Kullanıcı adı"><input id="password" type="password" placeholder="Şifre"><button onclick="login()">Giriş Yap</button><button id="signupBtn" class="secondary hide" onclick="signup()">İlk Kez Yönetici Hesabı Oluştur</button></div>
 </div></div>
-<aside id="kapLeft" class="kapRail left"><div class="kapBox"><h3>Son KAP Bildirimleri</h3><div class="kapSub">Resmî KAP akışı</div><div id="kapStatus" class="kapLive"><span class="kapDot"></span> KAP verisi yükleniyor</div><div id="kapLatestItems"><div class="kapItem"><div class="kapCode">KAP</div><div class="kapTitle">Bildirimler yükleniyor…</div></div></div><a class="kapFooter" href="https://www.kap.org.tr/tr/" target="_blank" rel="noopener">KAP ana sayfa ↗</a></div></aside>
+<aside id="kapLeft" class="kapRail left"><div class="kapBox">
+<h3>𝕏 / Twitter Haberleri</h3><div class="kapSub">Danışmanın seçtiği önemli paylaşımlar</div>
+<div id="kapLatestItems"><div class="kapItem"><div class="kapCode">HABER</div><div class="kapTitle">Haberler yükleniyor…</div></div></div>
+</div></aside>
 <div id="app" class="layout hide">
 <aside class="sidebar adminOnly"><div class="sideTitle">Danışanlar</div><div id="clientList" class="clientList"></div><button class="sideAdd" onclick="addClient()">＋ Yeni Danışan</button></aside>
 <main class="main">
+<div class="panel section portalV11">
+<div class="panelHead"><h2>Danışman Portalı</h2><span class="badge">V11</span></div>
+<div class="portalTabs"><button class="portalTab active" onclick="openPortalTab('portalWeb',this)">🌐 Web Siteleri</button><button class="portalTab" onclick="openPortalTab('portalSpk',this)">📑 SPK Bültenleri</button></div>
+<div id="portalWeb" class="portalPage active"><div class="notice" style="margin-bottom:12px">Danışmanın önerdiği faydalı web siteleri.</div><div id="websiteCards" class="resourceGrid"></div></div>
+<div id="portalSpk" class="portalPage"><div class="notice" style="margin-bottom:12px">Haftalık SPK bültenleri; en yenisi üstte.</div><div id="spkCards" class="resourceGrid"></div></div>
+</div>
+
 <div id="viewerTitle" class="panel hide" style="margin-bottom:16px"><h2 id="viewerName">Danışan Portföyü</h2><div class="notice">Bu ekran yalnızca görüntüleme içindir.</div></div>
 <div class="clientHero adminOnly"><div><div class="heroName" id="heroClient">Danışan seçilmedi</div><div class="heroSub" id="heroUpdate">Portföy ve analiz yönetimi</div></div><div class="heroActions"><button class="primary" onclick="addClient()">+ Danışan</button><button onclick="copyShare()">Paylaşım Linki</button><button class="danger" onclick="deleteClient()">Danışanı Sil</button></div></div>
 <div class="metrics"><div class="metric"><div class="label">Toplam Yatırım</div><div class="value" id="invested">₺0</div></div><div class="metric"><div class="label">Güncel Portföy</div><div class="value" id="current">₺0</div></div><div class="metric"><div class="label">Açık Kâr / Zarar</div><div class="value" id="pnl">₺0</div></div><div class="metric"><div class="label">Getiri</div><div class="value" id="return">%0</div></div></div>
@@ -63,9 +85,34 @@
 <div class="panel analysisCard"><div class="panelHead"><h2>Hisse Analiz Görseli</h2><span class="badge">Premium Analiz</span></div><select id="analysisSymbol" onchange="analysisChanged()"></select><div id="analysisEmpty" class="empty">Hisse seçildiğinde analiz görseli burada gösterilir.</div><img id="analysisImage" class="hide" alt="Hisse analiz görseli" onclick="openCurrentAnalysis()" style="width:100%;border-radius:14px;border:1px solid #e7eaf0;display:block"><div class="adminOnly" style="margin-top:12px"><input id="analysisFile" type="file" accept="image/png,image/jpeg,image/webp" style="width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:10px;background:#fff"><button class="save" onclick="uploadAnalysisImage()">Analiz Görselini Yükle / Değiştir</button><div class="notice">PNG, JPG veya WEBP yükleyebilirsin. Yeni görsel yüklendiğinde bu hisse için eskisinin yerine geçer.</div></div></div>
 <div class="panel sharePanel adminOnly"><div class="panelHead"><h2>Danışan Bilgileri</h2></div><div class="clientEdit"><input id="client" placeholder="Danışan adı"><button onclick="saveClient()">Adı Kaydet</button></div><div class="sharebox" style="margin-top:9px"><input id="shareLink" readonly><button onclick="copyShare()">Linki Kopyala</button></div><input id="lastUpdate" disabled style="width:100%;margin-top:9px;border:1px solid #dfe3ea;border-radius:10px;padding:10px;background:#f8f9fb"><div class="notice">Paylaşım linki salt okunurdur; danışan yönetici alanlarını göremez.</div></div>
 </div></div>
+
+<div class="panel section adminOnly">
+<div class="panelHead"><h2>Portal Yönetimi</h2><span class="badge">Yönetici</span></div>
+<div class="portalAdminGrid">
+<div><h3>🌐 Web Sitesi Ekle</h3><div class="form"><input id="siteName" placeholder="Site adı"><input id="siteUrl" placeholder="https://..."><textarea id="siteDesc" class="full" placeholder="Kısa açıklama"></textarea><button class="full" onclick="addWebsite()">Web Sitesini Ekle</button></div><div class="tableWrap" style="margin-top:12px"><table><tbody id="websiteAdminRows"></tbody></table></div></div>
+<div><h3>📑 SPK Bülteni Yükle</h3><div class="form"><input id="spkTitle" placeholder="Örn. 02.10.2026 - SPK Haftalık Bülten"><input id="spkDate" type="date"><input id="spkFile" class="full" type="file" accept="application/pdf"><button class="full" onclick="uploadSpk()">PDF Bülteni Yükle</button></div><div id="spkUploadInfo" class="notice" style="margin-top:12px">Yalnızca PDF.</div><div class="tableWrap" style="margin-top:12px"><table><tbody id="spkAdminRows"></tbody></table></div></div>
+</div></div><div class="panel section adminOnly" id="newsAdminPanel">
+  <div class="panelHead"><h2>Haber Merkezi</h2><span class="badge">Manuel Yayın</span></div>
+  <div class="notice" style="margin-bottom:12px">Buradan eklediğin haberler danışan ekranlarında sol veya sağ tarafta görünür.</div>
+  <div class="form">
+    <select id="newsType"><option value="TWITTER">X / Twitter Haberi</option><option value="GENEL">Genel Piyasa Haberi</option></select>
+    <input id="newsCode" placeholder="Hisse kodu (isteğe bağlı)">
+    <input id="newsSource" placeholder="Kaynak (örn. Bloomberg HT)">
+    <input id="newsTitle" class="full" placeholder="Haber başlığı">
+    <textarea id="newsText" class="full" placeholder="Kısa açıklama (isteğe bağlı)"></textarea>
+    <input id="newsUrl" class="full" placeholder="Kaynak linki (isteğe bağlı)">
+    <button class="full" onclick="addNews()">Haberi Yayınla</button>
+  </div>
+  <div class="tableWrap" style="margin-top:14px">
+    <table><thead><tr><th>Tür</th><th>Hisse</th><th>Başlık</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody id="newsAdminRows"></tbody></table>
+  </div>
+</div>
 <select id="clientSelect" class="hide" onchange="switchClient()"></select>
 </main></div>
-<aside id="kapRight" class="kapRail right"><div class="kapBox"><h3>Portföyümün KAP Haberleri</h3><div class="kapSub">Sahip olduğun hisselere özel</div><div id="kapHoldings" class="kapHoldings"></div><div id="kapPortfolioItems"><div class="kapItem"><div class="kapCode">PORTFÖY TAKİBİ</div><div class="kapTitle">Portföy KAP bildirimleri yükleniyor…</div></div></div><a class="kapFooter" href="https://www.kap.org.tr/tr/bildirim-sorgu" target="_blank" rel="noopener">Detaylı KAP sorgulama ↗</a></div></aside>
+<aside id="kapRight" class="kapRail right"><div class="kapBox">
+<h3>Genel Piyasa Haberleri</h3><div class="kapSub">Borsa, ekonomi ve şirket gündemi</div>
+<div id="kapPortfolioItems"><div class="kapItem"><div class="kapCode">PİYASA</div><div class="kapTitle">Haberler yükleniyor…</div></div></div>
+</div></aside>
 <div id="analysisModal" class="analysisModal hide" onclick="modalBackdropClose(event)"><div class="analysisModalBox"><button class="analysisModalClose" onclick="closeAnalysisModal()" aria-label="Kapat">×</button><img id="analysisModalImg" class="analysisModalImg" alt="Hisse analiz görseli"></div></div>
 <script>
 const SUPABASE_URL='https://dbwbwgmbikpwbcgypdoe.supabase.co';
@@ -131,14 +178,9 @@ async function loadActive(){if(!active){positions=[];closed=[];trades=[];analyse
 async function loadViewer(){try{const {data,error}=await sb.rpc('danisan_portfoyu',{p_paylasim_kodu:shareCode});if(error)throw error;if(!data||!data.danisan){$('viewerName').textContent='Geçersiz veya pasif paylaşım linki';return}active={...data.danisan,name:data.danisan.ad_soyad};positions=(data.pozisyonlar||[]).map(p=>({...p,symbol:p.hisse_kodu,company:p.hisse_adi,date:p.alis_tarihi,buy:+p.alis_fiyati,qty:+p.adet,price:+p.guncel_fiyat}));closed=(data.kapanan_pozisyonlar||[]).map(k=>({...k,symbol:k.hisse_kodu,buy:+k.alis_fiyati,sell:+k.satis_fiyati,qty:+k.adet,sellDate:k.satis_tarihi,pnl:(+k.satis_fiyati-(+k.alis_fiyati))*(+k.adet)}));trades=data.islemler||[];analyses={};for(const g of data.analiz_gorselleri||[]){const pos=positions.find(p=>(p.hisse_kodu||'').toUpperCase()===(g.hisse_kodu||'').toUpperCase());if(pos)analyses[pos.id]={image:g}};$('viewerName').textContent=active.name+' – Portföy Takibi';render();loadAnalysis()}catch(e){err(e)}}
 function normP(p){return viewer?p:{...p,symbol:p.hisse_kodu,company:p.hisse_adi,date:p.alis_tarihi,buy:+p.alis_fiyati,qty:+p.adet,price:+p.guncel_fiyat}}
 function render(){if(!viewer){const cl=$('clientList');if(cl)cl.innerHTML=clients.map(c=>`<button class="clientChip ${active&&c.id===active.id?'active':''}" onclick="selectClient('${c.id}')">${c.ad_soyad}</button>`).join('')||'<div style="color:#8b99b0;font-size:13px">Henüz danışan yok.</div>';const hn=$('heroClient'),hu=$('heroUpdate');if(hn)hn.textContent=active?active.ad_soyad:'Danışan seçilmedi';if(hu)hu.textContent=active?'Son güncelleme: '+new Date(active.updated_at).toLocaleString('tr-TR'):'Yeni danışan ekleyerek başlayın.';}if(!active){$('clientSelect').innerHTML='';$('client').value='';$('rows').innerHTML='<tr><td colspan="9">Önce danışan ekleyin.</td></tr>';$('closedRows').innerHTML='';if($('tradeRows'))$('tradeRows').innerHTML='';['invested','current','pnl'].forEach(x=>$(x).textContent=money(0));$('return').textContent='%0';$('shareLink').value='';return}if(!viewer){$('clientSelect').innerHTML=clients.map(c=>`<option value="${c.id}" ${c.id===active.id?'selected':''}>${c.ad_soyad}</option>`).join('');$('client').value=active.ad_soyad;$('lastUpdate').value='Son güncelleme: '+new Date(active.updated_at).toLocaleString('tr-TR');$('shareLink').value=location.origin+location.pathname+'?share='+active.paylasim_kodu}
-let inv=0,cur=0;const pp=positions.map(normP);$('rows').innerHTML=pp.map(p=>{const cost=p.buy*p.qty,val=p.price*p.qty,d=val-cost,r=cost?d/cost*100:0;inv+=cost;cur+=val;return `<tr ${viewer?`data-analysis-id="${p.id}" onclick="openAnalysisForPosition('${p.id}')" title="${p.symbol} analizini aç"`:''}><td><b>${p.symbol}</b><br><small>${p.company||''}</small></td><td>${p.date||''}</td><td>${money(p.buy)}</td><td>${p.qty}</td><td>${money(cost)}</td><td>${money(p.price)}</td><td class="${d>=0?'pos':'neg'}">${money(d)}</td><td class="${r>=0?'pos':'neg'}">${pct(r)}</td><td class="adminOnly"><div class="actions"><button onclick="editPrice('${p.id}')">Fiyat</button><button class="secondary" onclick="closePos('${p.id}')">Sat</button><button class="danger" onclick="delPos('${p.id}')">Sil</button></div></td></tr>`}).join('')||'<tr><td colspan="9" style="text-align:center;color:#6b7280">Henüz açık pozisyon yok.</td></tr>';const pnl=cur-inv,r=inv?pnl/inv*100:0;$('invested').textContent=money(inv);$('current').textContent=money(cur);$('pnl').textContent=money(pnl);$('pnl').className=pnl>=0?'pos':'neg';$('return').textContent=pct(r);$('return').className=r>=0?'pos':'neg';const selected=$('analysisSymbol').value;$('analysisSymbol').innerHTML='<option value="">Hisse seçin</option>'+pp.map(p=>`<option value="${p.id}">${p.symbol}</option>`).join('');if(pp.some(p=>p.id===selected))$('analysisSymbol').value=selected;$('closedRows').innerHTML=closed.map(x=>{const k=viewer?x:{symbol:x.hisse_kodu,buy:+x.alis_fiyati,sell:+x.satis_fiyati,qty:+x.adet,sellDate:x.satis_tarihi,pnl:(+x.satis_fiyati-(+x.alis_fiyati))*(+x.adet)};return `<tr><td>${k.symbol}</td><td>${money(k.buy)}</td><td>${money(k.sell)}</td><td>${k.qty}</td><td>${k.sellDate||''}</td><td class="${k.pnl>=0?'pos':'neg'}">${money(k.pnl)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz gerçekleşen satış yok.</td></tr>';if($('tradeRows'))$('tradeRows').innerHTML=(trades||[]).map(t=>{const type=t.islem_turu||t.type||'',price=+(t.fiyat||t.price||0),qty=+(t.adet||t.qty||0),sym=t.hisse_kodu||t.symbol||'',dt=t.islem_tarihi||t.date||'';return `<tr><td>${dt}</td><td><b>${sym}</b></td><td class="${type==='ALIS'?'pos':'neg'}"><b>${type}</b></td><td>${money(price)}</td><td>${qty}</td><td>${money(price*qty)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz işlem kaydı yok.</td></tr>';renderKapRails()}
+let inv=0,cur=0;const pp=positions.map(normP);$('rows').innerHTML=pp.map(p=>{const cost=p.buy*p.qty,val=p.price*p.qty,d=val-cost,r=cost?d/cost*100:0;inv+=cost;cur+=val;return `<tr ${viewer?`data-analysis-id="${p.id}" onclick="openAnalysisForPosition('${p.id}')" title="${p.symbol} analizini aç"`:''}><td><b>${p.symbol}</b><br><small>${p.company||''}</small></td><td>${p.date||''}</td><td>${money(p.buy)}</td><td>${p.qty}</td><td>${money(cost)}</td><td>${money(p.price)}</td><td class="${d>=0?'pos':'neg'}">${money(d)}</td><td class="${r>=0?'pos':'neg'}">${pct(r)}</td><td class="adminOnly"><div class="actions"><button onclick="editPrice('${p.id}')">Fiyat</button><button class="secondary" onclick="closePos('${p.id}')">Sat</button><button class="danger" onclick="delPos('${p.id}')">Sil</button></div></td></tr>`}).join('')||'<tr><td colspan="9" style="text-align:center;color:#6b7280">Henüz açık pozisyon yok.</td></tr>';const pnl=cur-inv,r=inv?pnl/inv*100:0;$('invested').textContent=money(inv);$('current').textContent=money(cur);$('pnl').textContent=money(pnl);$('pnl').className=pnl>=0?'pos':'neg';$('return').textContent=pct(r);$('return').className=r>=0?'pos':'neg';const selected=$('analysisSymbol').value;$('analysisSymbol').innerHTML='<option value="">Hisse seçin</option>'+pp.map(p=>`<option value="${p.id}">${p.symbol}</option>`).join('');if(pp.some(p=>p.id===selected))$('analysisSymbol').value=selected;$('closedRows').innerHTML=closed.map(x=>{const k=viewer?x:{symbol:x.hisse_kodu,buy:+x.alis_fiyati,sell:+x.satis_fiyati,qty:+x.adet,sellDate:x.satis_tarihi,pnl:(+x.satis_fiyati-(+x.alis_fiyati))*(+x.adet)};return `<tr><td>${k.symbol}</td><td>${money(k.buy)}</td><td>${money(k.sell)}</td><td>${k.qty}</td><td>${k.sellDate||''}</td><td class="${k.pnl>=0?'pos':'neg'}">${money(k.pnl)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz gerçekleşen satış yok.</td></tr>';if($('tradeRows'))$('tradeRows').innerHTML=(trades||[]).map(t=>{const type=t.islem_turu||t.type||'',price=+(t.fiyat||t.price||0),qty=+(t.adet||t.qty||0),sym=t.hisse_kodu||t.symbol||'',dt=t.islem_tarihi||t.date||'';return `<tr><td>${dt}</td><td><b>${sym}</b></td><td class="${type==='ALIS'?'pos':'neg'}"><b>${type}</b></td><td>${money(price)}</td><td>${qty}</td><td>${money(price*qty)}</td></tr>`}).join('')||'<tr><td colspan="6" style="text-align:center;color:#6b7280">Henüz işlem kaydı yok.</td></tr>';renderKapRails();loadManualNews()}
 
-function renderKapRails(){
- if(!viewer)return;
- const el=$('kapHoldings'); if(!el)return;
- const syms=[...new Set((positions||[]).map(p=>(p.hisse_kodu||p.symbol||'').toUpperCase()).filter(Boolean))];
- el.innerHTML=syms.length?syms.map(x=>`<span class="kapHolding">${x}</span>`).join(''):'<span class="kapHolding">Pozisyon yok</span>';
-}
+function renderKapRails(){ if(!viewer)return; }
 
 async function addClient(){const name=prompt('Yeni danışanın adı:');if(!name?.trim())return;try{const {data:{user}}=await sb.auth.getUser();const {data,error}=await sb.from('danisanlar').insert({ad_soyad:name.trim(),owner_id:user.id}).select().single();if(error)throw error;active=data;await loadClients()}catch(e){err(e)}}
 async function switchClient(){active=clients.find(c=>c.id===$('clientSelect').value);await loadActive()}
@@ -206,24 +248,98 @@ async function touch(){if(!active)return;const now=new Date().toISOString();awai
 async function copyShare(){try{await navigator.clipboard.writeText($('shareLink').value);alert('Danışan linki kopyalandı.')}catch{prompt('Bu linki kopyala:',$('shareLink').value)}}
 boot();
 
-async function loadKapNews(){
-  if(!document.body.classList.contains('viewer')) return;
-  const latestEl=$('kapLatestItems'), portEl=$('kapPortfolioItems'), statusEl=$('kapStatus');
-  const syms=[...new Set(positions.map(p=>(p.hisse_kodu||p.symbol||'').toUpperCase()).filter(Boolean))];
-  const card=(x)=>{const code=(x.symbols||[]).find(z=>syms.includes(z))||(x.symbols||[])[0]||'KAP';const safe=(v)=>String(v||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));return `<a class="kapItem" href="${safe(x.url||'https://www.kap.org.tr/tr/bildirim-sorgu')}" target="_blank" rel="noopener"><div class="kapCode">${safe(code)}</div><div class="kapTitle">${safe(x.title||'KAP bildirimi')}</div><div class="kapMeta">${safe(x.date||'Yeni bildirim')} · KAP ↗</div></a>`};
+
+let newsCache=[];
+
+function escNews(v){
+  return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function newsCard(n){
+  const code=(n.hisse_kodu||'').trim().toUpperCase();
+  const source=(n.kaynak||'Danışman').trim();
+  const when=n.created_at?new Date(n.created_at).toLocaleString('tr-TR',{dateStyle:'short',timeStyle:'short'}):'';
+  const inner=`<div class="kapCode">${escNews(code|| (n.tur==='TWITTER'?'𝕏 HABER':'PİYASA'))}</div>
+    <div class="kapTitle">${escNews(n.baslik||'Haber')}</div>
+    ${n.aciklama?`<div class="kapMeta">${escNews(n.aciklama)}</div>`:''}
+    <div class="kapSource">${escNews(source)}</div>
+    <div class="kapMeta">${escNews(when)}</div>`;
+  return n.link
+    ? `<a class="kapItem" href="${escNews(n.link)}" target="_blank" rel="noopener">${inner}</a>`
+    : `<div class="kapItem">${inner}</div>`;
+}
+async function loadManualNews(){
   try{
-    const [allR,portR]=await Promise.all([fetch('/.netlify/functions/kap'),fetch('/.netlify/functions/kap?symbols='+encodeURIComponent(syms.join(',')))]);
-    const all=await allR.json(), port=await portR.json();
-    if(!all.ok) throw new Error(all.error||'KAP verisi alınamadı');
-    if(statusEl)statusEl.innerHTML='<span class="kapDot" style="background:#38d996"></span> KAP bağlantısı aktif';
-    if(latestEl)latestEl.innerHTML=(all.items||[]).length?(all.items||[]).slice(0,8).map(card).join(''):'<div class="kapItem"><div class="kapTitle">Şu anda listelenecek bildirim bulunamadı.</div></div>';
-    if(portEl)portEl.innerHTML=(port.items||[]).length?(port.items||[]).slice(0,8).map(card).join(''):'<div class="kapItem"><div class="kapCode">PORTFÖY</div><div class="kapTitle">Portföyündeki hisseler için son akışta eşleşen KAP bildirimi bulunamadı.</div></div>';
+    const {data,error}=await sb.from('haberler').select('*').eq('aktif',true).order('created_at',{ascending:false}).limit(50);
+    if(error) throw error;
+    newsCache=data||[];
+    const left=$('kapLatestItems'),right=$('kapPortfolioItems');
+    if(left){
+      const arr=newsCache.filter(n=>n.tur==='TWITTER').slice(0,10);
+      left.innerHTML=arr.length?arr.map(newsCard).join(''):'<div class="kapItem"><div class="kapTitle">Henüz X / Twitter haberi yayınlanmadı.</div></div>';
+    }
+    if(right){
+      const arr=newsCache.filter(n=>n.tur==='GENEL').slice(0,10);
+      right.innerHTML=arr.length?arr.map(newsCard).join(''):'<div class="kapItem"><div class="kapTitle">Henüz genel piyasa haberi yayınlanmadı.</div></div>';
+    }
+    renderNewsAdmin();
   }catch(e){
-    if(statusEl)statusEl.innerHTML='<span class="kapDot" style="background:#ff6677"></span> KAP bağlantısı geçici olarak kullanılamıyor';
-    if(latestEl)latestEl.innerHTML='<a class="kapItem" href="https://www.kap.org.tr/tr/bildirim-sorgu" target="_blank" rel="noopener"><div class="kapCode">KAP</div><div class="kapTitle">Resmî KAP sayfasında bildirimleri görüntüle</div><div class="kapMeta">KAP ↗</div></a>';
-    if(portEl)portEl.innerHTML='<div class="kapItem"><div class="kapTitle">Canlı veri alınamadı. Biraz sonra yeniden deneyin.</div></div>';
+    console.error(e);
+    if($('kapLatestItems'))$('kapLatestItems').innerHTML='<div class="kapItem"><div class="kapTitle">Haberler şu anda yüklenemedi.</div></div>';
+    if($('kapPortfolioItems'))$('kapPortfolioItems').innerHTML='<div class="kapItem"><div class="kapTitle">Haberler şu anda yüklenemedi.</div></div>';
   }
 }
-const _oldRenderKapHoldings=typeof renderKapHoldings==='function'?renderKapHoldings:null;
-if(_oldRenderKapHoldings){renderKapHoldings=function(){_oldRenderKapHoldings();clearTimeout(window.__kapTimer);window.__kapTimer=setTimeout(loadKapNews,250)}}
+function renderNewsAdmin(){
+  const el=$('newsAdminRows'); if(!el)return;
+  el.innerHTML=newsCache.map(n=>`<tr>
+    <td>${n.tur==='TWITTER'?'X / Twitter':'Genel'}</td>
+    <td><b>${escNews(n.hisse_kodu||'-')}</b></td>
+    <td>${escNews(n.baslik||'')}</td>
+    <td>${n.created_at?new Date(n.created_at).toLocaleString('tr-TR'):'-'}</td>
+    <td><button class="danger" style="border:0;border-radius:8px;padding:7px 9px;cursor:pointer" onclick="deleteNews('${n.id}')">Sil</button></td>
+  </tr>`).join('')||'<tr><td colspan="5" class="empty">Henüz haber eklenmedi.</td></tr>';
+}
+async function addNews(){
+  const tur=$('newsType').value,baslik=$('newsTitle').value.trim();
+  if(!baslik)return alert('Haber başlığını yazın.');
+  try{
+    const {data:{user}}=await sb.auth.getUser();
+    if(!user)throw new Error('Oturum bulunamadı.');
+    const row={
+      owner_id:user.id,tur,
+      hisse_kodu:$('newsCode').value.trim().toUpperCase()||null,
+      kaynak:$('newsSource').value.trim()||'Danışman',
+      baslik,
+      aciklama:$('newsText').value.trim()||null,
+      link:$('newsUrl').value.trim()||null,
+      aktif:true
+    };
+    const {error}=await sb.from('haberler').insert(row);
+    if(error)throw error;
+    ['newsCode','newsSource','newsTitle','newsText','newsUrl'].forEach(id=>$(id).value='');
+    await loadManualNews();
+    alert('Haber yayınlandı.');
+  }catch(e){err(e)}
+}
+async function deleteNews(id){
+  if(!confirm('Bu haber silinsin mi?'))return;
+  try{
+    const {error}=await sb.from('haberler').delete().eq('id',id);
+    if(error)throw error;
+    await loadManualNews();
+  }catch(e){err(e)}
+}
+setTimeout(loadManualNews,800);
+
+
+let portalSites=[],portalSpk=[];
+function openPortalTab(id,btn){document.querySelectorAll('.portalPage').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.portalTab').forEach(x=>x.classList.remove('active'));$(id)?.classList.add('active');btn?.classList.add('active')}
+function pEsc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+async function loadPortalResources(){try{const[s,b]=await Promise.all([sb.from('web_siteleri').select('*').eq('aktif',true).order('sira').order('created_at',{ascending:false}),sb.from('spk_bultenleri').select('*').eq('aktif',true).order('bulten_tarihi',{ascending:false})]);if(s.error)throw s.error;if(b.error)throw b.error;portalSites=s.data||[];portalSpk=b.data||[];renderPortalResources()}catch(e){console.error(e)}}
+function renderPortalResources(){if($('websiteCards'))$('websiteCards').innerHTML=portalSites.length?portalSites.map(x=>`<a class="resourceCard" href="${pEsc(x.url)}" target="_blank" rel="noopener"><h3>🌐 ${pEsc(x.ad)}</h3><p>${pEsc(x.aciklama||'Siteyi açmak için tıklayın.')}</p><div class="resourceMeta">Siteyi aç ↗</div></a>`).join(''):'<div class="empty">Henüz web sitesi eklenmedi.</div>';if($('spkCards'))$('spkCards').innerHTML=portalSpk.length?portalSpk.map(x=>`<a class="resourceCard" href="${pEsc(x.pdf_url)}" target="_blank" rel="noopener"><h3>📑 ${pEsc(x.baslik)}</h3><p>SPK Haftalık Bülteni</p><div class="resourceMeta">${x.bulten_tarihi||''} • PDF aç ↗</div></a>`).join(''):'<div class="empty">Henüz SPK bülteni yüklenmedi.</div>';if($('websiteAdminRows'))$('websiteAdminRows').innerHTML=portalSites.map(x=>`<tr><td>${pEsc(x.ad)}</td><td><button onclick="deleteWebsite('${x.id}')">Sil</button></td></tr>`).join('');if($('spkAdminRows'))$('spkAdminRows').innerHTML=portalSpk.map(x=>`<tr><td>${pEsc(x.baslik)}</td><td><button onclick="deleteSpk('${x.id}','${pEsc(x.storage_path||'')}')">Sil</button></td></tr>`).join('')}
+async function addWebsite(){const ad=$('siteName').value.trim(),url=$('siteUrl').value.trim(),aciklama=$('siteDesc').value.trim();if(!ad||!url)return alert('Site adı ve link zorunlu.');if(!/^https?:\/\//i.test(url))return alert('Link https:// ile başlamalı.');try{const{data:{user}}=await sb.auth.getUser();const{error}=await sb.from('web_siteleri').insert({owner_id:user.id,ad,url,aciklama:aciklama||null,aktif:true});if(error)throw error;$('siteName').value=$('siteUrl').value=$('siteDesc').value='';await loadPortalResources();alert('Web sitesi eklendi.')}catch(e){err(e)}}
+async function deleteWebsite(id){if(confirm('Silinsin mi?')){const{error}=await sb.from('web_siteleri').delete().eq('id',id);if(error)return err(error);await loadPortalResources()}}
+async function uploadSpk(){const baslik=$('spkTitle').value.trim(),tarih=$('spkDate').value,file=$('spkFile').files[0];if(!baslik||!tarih||!file)return alert('Başlık, tarih ve PDF zorunlu.');if(file.type!=='application/pdf')return alert('PDF seçin.');try{const{data:{user}}=await sb.auth.getUser();const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,'_'),path=`${user.id}/${Date.now()}_${safe}`;const up=await sb.storage.from('spk-bultenleri').upload(path,file,{contentType:'application/pdf'});if(up.error)throw up.error;const pdf_url=sb.storage.from('spk-bultenleri').getPublicUrl(path).data.publicUrl;const ins=await sb.from('spk_bultenleri').insert({owner_id:user.id,baslik,bulten_tarihi:tarih,pdf_url,storage_path:path,aktif:true});if(ins.error)throw ins.error;$('spkTitle').value=$('spkDate').value=$('spkFile').value='';$('spkUploadInfo').textContent='Bülten yüklendi.';await loadPortalResources()}catch(e){err(e)}}
+async function deleteSpk(id,path){if(!confirm('Bülten silinsin mi?'))return;try{const d=await sb.from('spk_bultenleri').delete().eq('id',id);if(d.error)throw d.error;if(path)await sb.storage.from('spk-bultenleri').remove([path]);await loadPortalResources()}catch(e){err(e)}}
+setTimeout(loadPortalResources,1000);
+
 </script></body></html>
