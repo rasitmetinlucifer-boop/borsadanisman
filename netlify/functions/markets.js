@@ -5,89 +5,39 @@ exports.handler = async function () {
   };
 
   try {
-    const r = await fetch("https://www.genelpara.com/", {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; BorsaDanisman/1.0)",
-        "Accept-Language": "tr-TR,tr;q=0.9"
-      }
-    });
+    const apiKey = process.env.HESAPLI_ALTIN_API_KEY;
 
-    if (!r.ok) {
-      throw new Error("Kaynak HTTP " + r.status);
+    if (!apiKey) {
+      throw new Error("API anahtarı bulunamadı");
     }
 
-    const html = await r.text();
-
-    const clean = html
-      .replace(/<script[\s\S]*?<\/script>/gi, " ")
-      .replace(/<style[\s\S]*?<\/style>/gi, " ")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/&nbsp;/g, " ")
-      .replace(/\s+/g, " ");
-
-    const defs = {
-      USD: ["Dolar", "USD"],
-      EUR: ["Euro", "EUR"],
-      GA: ["Gram Altın", "GA"],
-      GAG: ["Gram Gümüş", "GAG"]
-    };
-
-    const data = {};
-
-    const num = (s) =>
-      Number(
-        String(s)
-          .replace(/\./g, "")
-          .replace(",", ".")
-      );
-
-    for (const [code, [name, sym]] of Object.entries(defs)) {
-      const esc = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-      let m = clean.match(
-        new RegExp(
-          esc +
-            "\\s+" +
-            sym +
-            "\\s+([0-9.]+,[0-9]+)\\s+TRY\\s+([+-]?[0-9.,]+)%",
-          "i"
-        )
-      );
-
-      if (!m) {
-        m = clean.match(
-          new RegExp(
-            esc +
-              "\\s+([0-9.]+,[0-9]+)\\s+([+-]?[0-9.,]+)%",
-            "i"
-          )
-        );
+    const response = await fetch(
+      "https://hesaplialtin.com/api/v1/public-prices",
+      {
+        headers: {
+          "X-API-Key": apiKey,
+          "Accept": "application/json"
+        }
       }
+    );
 
-      if (m) {
-        data[code] = {
-          price: num(m[1]),
-          change: num(m[2])
-        };
-      }
+    if (!response.ok) {
+      throw new Error("API HTTP " + response.status);
     }
 
-    if (Object.keys(data).length < 4) {
-      throw new Error(
-        "Kaynak biçimi değişti; dört piyasa verisi birlikte okunamadı."
-      );
-    }
+    const raw = await response.json();
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         ok: true,
-        data,
+        data: raw,
         updated_at: new Date().toISOString(),
-        source: "GenelPara"
+        source: "Hesaplı Altın"
       })
     };
+
   } catch (e) {
     return {
       statusCode: 502,
